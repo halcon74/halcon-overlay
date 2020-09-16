@@ -1,0 +1,18 @@
+--- a/xnview.sh	2018-12-19 13:28:51.000000000 +0300
++++ b/xnview.sh	2020-09-11 22:18:19.739543828 +0300
+ *    See [1], [2]
+ *	[1] - https://forums.gentoo.org/viewtopic-p-8222586.html#8222586
+ *	[2] - https://forums.gentoo.org/viewtopic-p-8222718.html#8222718
+@@ -2,6 +2,10 @@
+ 
+ dirname=`readlink -e "$0"`
+ dirname=`dirname "$dirname"`
+-export LD_LIBRARY_PATH="$dirname/lib:$dirname/Plugins:$LD_LIBRARY_PATH"
+-export QT_PLUGIN_PATH="$dirname/lib:$QT_PLUGIN_PATH"
++
++LD_LIBRARY_PATH=${LD_LIBRARY_PATH-}${LD_LIBRARY_PATH:+:}"$dirname/lib:$dirname/Plugins"
++export LD_LIBRARY_PATH
++QT_PLUGIN_PATH=${QT_PLUGIN_PATH-}${QT_PLUGIN_PATH:+:}"$dirname/lib"
++export QT_PLUGIN_PATH
++
+ exec "$dirname/XnView" "$@"

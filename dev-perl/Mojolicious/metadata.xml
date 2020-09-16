@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>shumkar@shumkar.ru</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription lang="en">
+		Real-time web framework
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mojolicious/mojo</remote-id>
+		<bugs-to>https://github.com/mojolicious/mojo/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

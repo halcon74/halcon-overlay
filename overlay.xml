@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<repositories encoding="unicode" version="0.1">
+	<repo priority="50" quality="experimental" status="unofficial">
+		<name>halcon-overlay</name>
+		<description>Personal overlay of Alexey Mishustin</description>
+		<homepage>https://github.com/halcon74/halcon-overlay</homepage>
+		<owner type="person">
+			<email>shumkar@shumkar.ru</email>
+			<name>Alexey Mishustin</name>
+		</owner>
+		<source type="git">https://github.com/halcon74/halcon-overlay.git</source>
+	</repo>
+</repositories>

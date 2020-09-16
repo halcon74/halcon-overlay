@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>shumkar@shumkar.ru</email>
+    <name>Alexey Mishustin</name>
+  </maintainer>
+  <longdescription lang="en">
+    suid program for using video drivers under rootless Xorg
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gch1p/drm_master_util</remote-id>
+    <bugs-to>https://github.com/gch1p/drm_master_util/issues</bugs-to>
+  </upstream>
+</pkgmetadata>
