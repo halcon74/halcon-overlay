@@ -27,8 +27,8 @@ RESTRICT="
 mirror
 !test? ( test )"
 
-#MY_GIT_DIR=''
-#
+MY_GIT_DIR=''
+
 RDEPEND="
 	!minimal? (
 		>=dev-perl/EV-4.0.0
@@ -52,7 +52,7 @@ src_unpack() {
 	# should instead take the tag name from the user instead of guessing it.
 	local -x GIT_DIR
 	_git-r3_set_gitdir "$EGIT_REPO_URI"
-#	elog "GIT_DIR=${GIT_DIR}"
+	elog "GIT_DIR=${GIT_DIR}"
 	
 	local EGIT_COMMIT
 	EGIT_COMMIT=$(git describe --tags --abbrev=0 master)
@@ -61,8 +61,8 @@ src_unpack() {
 	# Yes, fetch again, now that EGIT_COMMIT is a specific tag.
 	git-r3_fetch
 	git-r3_checkout
-#	
-#	MY_GIT_DIR="$GIT_DIR"
+	
+	MY_GIT_DIR="$GIT_DIR"
 }
 
 src_test() {
@@ -70,10 +70,7 @@ src_test() {
 	perl-module_src_test
 }
 
-# pkg_postinst() {
-#	# Without deleting GIT_DIR (the git repository in distfiles cache) all installations, except the first, 
-#	# will fail to find a new tag via git describe and will be stick to the same version forever.
-#	# Probably it could be fixed with some git functionality; until I find it, deleting is a workaround
-#	elog "deleting MY_GIT_DIR ${MY_GIT_DIR}..."
-#	rm -r "${MY_GIT_DIR}" || die "deleting MY_GIT_DIR failed"
-# }
+pkg_postinst() {
+	elog "deleting MY_GIT_DIR ${MY_GIT_DIR}..."
+	rm -r "${MY_GIT_DIR}" || die "deleting MY_GIT_DIR failed"
+}
