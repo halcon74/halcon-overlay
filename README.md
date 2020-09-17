@@ -10,7 +10,7 @@ If you find a bug, please feel free to report it.
 * media-gfx/xnviewmp-bin - An attempt to build XnViewMP with system libraries. So far unsuccessful...
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8).
 
-#### I'm currently trying to maintain the overlay in two Version Control Systems:
+#### I am currently testing hg-git for committing simultaneously to:
 
-* Git repository - https://github.com/halcon74/halcon-overlay
 * Mercurial repository - https://osdn.net/projects/halcon-overlay/scm/hg/code/tree/tip/
+* Git repository - https://github.com/halcon74/halcon-overlay
