@@ -11,6 +11,6 @@ If you find a bug, please feel free to report it.
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8).
 
 #### I am currently committing (via hg-git) simultaneously to:
-
+ 
 * Mercurial repository - https://osdn.net/projects/halcon-overlay/scm/hg/code/tree/tip/
 * Git repository - https://github.com/halcon74/halcon-overlay
