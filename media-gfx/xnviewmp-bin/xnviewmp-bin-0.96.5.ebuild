@@ -4,7 +4,7 @@
 # Based on an ebuild from c2p-overlay [1]
 # [1] - https://github.com/gentoo-mirror/c2p-overlay/blob/master/media-gfx/XnViewMP/XnViewMP-0.89.ebuild
 
-# Gentoo Forum Discussion is on [2]
+# Gentoo Forum discussion is on [2]
 # [2] - https://forums.gentoo.org/viewtopic-t-1118764-highlight-.html
 
 EAPI=7

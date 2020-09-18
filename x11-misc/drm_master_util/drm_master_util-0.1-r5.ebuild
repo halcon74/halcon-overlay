@@ -8,7 +8,7 @@
 # Requires patches for x11-drivers/xf86-video-amdgpu, x11-drivers/xf86-video-ati, x11-base/xorg-server [3]
 # [3] - https://forums.gentoo.org/viewtopic-p-8477654.html#8477654
 
-# No more actual for Linux Kernels >=5.8 [3]
+# No more actual for Linux Kernels >=5.8 [4]
 # [4] - https://forums.gentoo.org/viewtopic-p-8487416.html#8487416
 
 EAPI=7
