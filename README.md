@@ -13,7 +13,7 @@ If you find a bug, please feel free to report it.
 
 #### How to add the overlay:
 
-* # eselect repository add halcon-overlay git https://github.com/halcon74/halcon-overlay.git
+* eselect repository add halcon-overlay git https://github.com/halcon74/halcon-overlay.git
 
 #### I am currently committing (via hg-git) simultaneously to:
  
