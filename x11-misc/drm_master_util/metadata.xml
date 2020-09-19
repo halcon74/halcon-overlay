@@ -5,7 +5,7 @@
 		<email>shumkar@shumkar.ru</email>
 		<name>Alexey Mishustin</name>
 	</maintainer>
-	</use>
+	<use>
 		<flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually) (inherited)</flag>
 	</use>
 	<longdescription lang="en">
