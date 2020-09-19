@@ -7,7 +7,7 @@ If you find a bug, please feel free to report it.
 
 * app-text/evince - Building evince without gvfs and dbus. And it works!
 * dev-perl/Mojolicious - A "really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
-* dev-vcs/hg-git - A version bump, relatively to the current 0.9.0_rc1 in ::gentoo (19.09.2020)
+* dev-vcs/hg-git - A version bump, relatively to the current 0.9.0_rc1 in ::gentoo (19.09.2020). Supports mercurial-5.5.1.
 * media-gfx/xnviewmp-bin - An attempt to build XnViewMP with system libraries. So far unsuccessful...
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8).
 
