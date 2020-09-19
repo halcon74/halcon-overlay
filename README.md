@@ -13,10 +13,10 @@ If you find a bug, please feel free to report it.
 
 #### Gentoo Quality Assurance:
 
-* The only error shown by repoman is due to a non-standard XnView license
-*
+* The only error shown by repoman is due to a non-standard XnView license.
+
 * /var/db/repos/halcon-overlay # repoman -dxv full
-* 
+
 * RepoMan scours the neighborhood...
 * [INFO] checking package app-text/evince
 * [INFO] checking package dev-perl/Mojolicious
