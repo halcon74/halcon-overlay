@@ -16,6 +16,6 @@ If you find a bug, please feel free to report it.
 * eselect repository add halcon-overlay git https://github.com/halcon74/halcon-overlay.git
 
 #### I am currently committing (via hg-git) simultaneously to:
- 
+
 * Mercurial repository - https://osdn.net/projects/halcon-overlay/scm/hg/code/tree/tip/
 * Git repository - https://github.com/halcon74/halcon-overlay
