@@ -6,7 +6,7 @@
 		<name>Alexey Mishustin</name>
 	</maintainer>
 	<use>
-		<flag name="dbus">Use GNOME's userspace virtual filesystem via dbus</flag>
+		<flag name="dbus">Use GNOME's userspace virtual filesystem via <pkg>sys-apps/dbus</pkg></flag>
 		<flag name="dvi">Enable the built-in DVI viewer</flag>
 		<flag name="nautilus">Enable property page extension in <pkg>gnome-base/nautilus</pkg></flag>
 		<flag name="t1lib">Enable the Type-1 fonts for the built-in DVI viewer (<pkg>media-libs/t1lib</pkg>)</flag>
