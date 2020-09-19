@@ -47,21 +47,21 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	git-r3_fetch
-	
+
 	# Use a git-r3 internal function to find the long term storage of the local clone. This is probably a bad idea, and the ebuild
 	# should instead take the tag name from the user instead of guessing it.
 	local -x GIT_DIR
 	_git-r3_set_gitdir "$EGIT_REPO_URI"
 	elog "GIT_DIR=${GIT_DIR}"
-	
+
 	local EGIT_COMMIT
 	EGIT_COMMIT=$(git describe --tags --abbrev=0 master)
 	elog "EGIT_COMMIT=${EGIT_COMMIT}"
-	
+
 	# Yes, fetch again, now that EGIT_COMMIT is a specific tag.
 	git-r3_fetch
 	git-r3_checkout
-	
+
 	MY_GIT_DIR="$GIT_DIR"
 }
 
