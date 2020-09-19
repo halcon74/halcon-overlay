@@ -5,6 +5,10 @@
 		<email>shumkar@shumkar.ru</email>
 		<name>Alexey Mishustin</name>
 	</maintainer>
+		<flag name="bundled-qt-libs">Use Qt libraries shipped with XnViewMP</flag>
+		<flag name="bundled-icu-libs">Use icu libraries shipped with XnViewMP</flag>
+		<flag name="bundled-other-libs">Use other (than Qt and icu) libraries shipped with XnViewMP</flag>
+		<flag name="system-pulseaudio">Use standard pulseadio libraries provided by the system</flag>
 	<longdescription lang="en">
 		A versatile and powerful photo viewer, image management, image resizer
 	</longdescription>

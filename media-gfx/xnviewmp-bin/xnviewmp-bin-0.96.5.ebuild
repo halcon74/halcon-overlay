@@ -49,7 +49,7 @@ BUNDLED_QT_LIBS="
 	libQt5Xml.so.5				libQt5Xml.so.5.12.8
 	libQtAV.so.1				libQtAV.so.1.12.0
 	libQtAVWidgets.so.1			libQtAVWidgets.so.1.12.0"
-	
+
 BUNDLED_ICU_LIBS="
 	libicudata.so				libicudata.so.56			libicudata.so.56.1
 	libicui18n.so				libicui18n.so.56			libicui18n.so.56.1
@@ -148,7 +148,7 @@ src_prepare() {
 			rm -rv "${S}"/lib/${libname} || die "Failed removing bundled icu library ${libname}"
 		done
 	fi
-	
+
 	if ! use bundled-other-libs ; then
 		einfo Removing bundled other libraries
 		for libname in ${BUNDLED_OTHER_LIBS} ; do
