@@ -29,8 +29,8 @@ Please fix these important QA issues first.
 RepoMan sez: "Make your QA payment on time and you'll never see the likes of me."  
 
 #### How to add the overlay:
-
-* eselect repository add halcon-overlay git https://github.com/halcon74/halcon-overlay.git
+  
+eselect repository add halcon-overlay git https://github.com/halcon74/halcon-overlay.git  
 
 #### I push the commits (via hg-git) simultaneously to:
 
