@@ -15,14 +15,14 @@ If you find a bug, please feel free to report it.
 
 * repoman shows no errors: 
   
-/var/db/repos/halcon-overlay # repoman -dxv full
-
-RepoMan scours the neighborhood...
-[INFO] checking package app-text/evince
-[INFO] checking package dev-perl/Mojolicious
-[INFO] checking package dev-vcs/hg-git
-[INFO] checking package media-gfx/xnviewmp-bin
-[INFO] checking package x11-misc/drm_master_util
+/var/db/repos/halcon-overlay # repoman -dxv full  
+  
+RepoMan scours the neighborhood...  
+[INFO] checking package app-text/evince  
+[INFO] checking package dev-perl/Mojolicious  
+[INFO] checking package dev-vcs/hg-git  
+[INFO] checking package media-gfx/xnviewmp-bin  
+[INFO] checking package x11-misc/drm_master_util  
 RepoMan sez: "If everyone were like you, I'd be out of business!"  
 
 #### How to add the overlay:
