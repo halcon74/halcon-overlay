@@ -11,24 +11,28 @@ If you find a bug, please feel free to report it.
 * media-gfx/xnviewmp-bin - An attempt to build XnViewMP with system libraries. So far unsuccessful...
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8).
 
-#### Gentoo Quality Assurance:
-
-* repoman shows no errors: 
-  
-/var/db/repos/halcon-overlay # repoman -dxv full  
-  
-RepoMan scours the neighborhood...  
-[INFO] checking package app-text/evince  
-[INFO] checking package dev-perl/Mojolicious  
-[INFO] checking package dev-vcs/hg-git  
-[INFO] checking package media-gfx/xnviewmp-bin  
-[INFO] checking package x11-misc/drm_master_util  
-RepoMan sez: "If everyone were like you, I'd be out of business!"  
-
 #### How to add the overlay:
   
 eselect repository add halcon-overlay git https://github.com/halcon74/halcon-overlay.git  
 emerge --sync halcon-overlay  
+
+#### Gentoo Quality Assurance:
+
+* /var/db/repos/halcon-overlay # repoman -dx full
+  
+RepoMan scours the neighborhood...  
+RepoMan sez: "If everyone were like you, I'd be out of business!"  
+
+* /var/db/repos/halcon-overlay # pkgcheck scan
+  
+x11-misc/drm_master_util  
+  VisibleVcsPkg: version 9999: VCS version visible for KEYWORDS="~amd64", profile default/linux/amd64/17.0 (41 total)  
+  
+dev-perl/Mojolicious  
+  VisibleVcsPkg: version 9999: VCS version visible for KEYWORDS="~amd64", profile default/linux/amd64/17.0 (94 total)  
+  
+app-text/evince  
+  PotentialStable: version 3.34.2: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~arm64, ~ia64, ~ppc, ~ppc64, ~sparc ]  
 
 #### I push the commits (via hg-git) simultaneously to:
 
