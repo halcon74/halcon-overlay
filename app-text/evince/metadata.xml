@@ -13,6 +13,6 @@
 		<flag name="xps">Enable XPS viewer using <pkg>app-text/libgxps</pkg></flag>
 	</use>
 	<longdescription lang="en">
-		Simple document viewer for GNOME
+		Evince is a document viewer for multiple document formats. The goal of evince is to replace the multiple document viewers that exist on the GNOME Desktop with a single simple application.
 	</longdescription>
 </pkgmetadata>
