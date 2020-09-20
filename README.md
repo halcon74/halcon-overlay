@@ -25,12 +25,6 @@ RepoMan sez: "If everyone were like you, I'd be out of business!"
 
 * /var/db/repos/halcon-overlay # pkgcheck scan
   
-x11-misc/drm_master_util  
-  VisibleVcsPkg: version 9999: VCS version visible for KEYWORDS="~amd64", profile default/linux/amd64/17.0 (41 total)  
-  
-dev-perl/Mojolicious  
-  VisibleVcsPkg: version 9999: VCS version visible for KEYWORDS="~amd64", profile default/linux/amd64/17.0 (94 total)  
-  
 app-text/evince  
   PotentialStable: version 3.34.2: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~arm64, ~ia64, ~ppc, ~ppc64, ~sparc ]  
 
