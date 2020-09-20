@@ -1,0 +1,4 @@
+bundled-qt-libs - Use Qt libraries shipped with the package (introduced in halcon-overlay)
+bundled-icu-libs - Use icu libraries shipped with the package (introduced in halcon-overlay)
+bundled-other-libs - Use other (than Qt and icu) libraries shipped with the package (introduced in halcon-overlay)
+system-pulseaudio - Use standard pulseadio libraries provided by the system (introduced in halcon-overlay)
