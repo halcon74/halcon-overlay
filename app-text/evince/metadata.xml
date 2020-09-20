@@ -15,4 +15,8 @@
 	<longdescription lang="en">
 		Evince is a document viewer for multiple document formats. The goal of evince is to replace the multiple document viewers that exist on the GNOME Desktop with a single simple application.
 	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.gnome.org/GNOME/evince/issues/</bugs-to>
+		<remote-id type="github">GNOME/evince</remote-id>
+	</upstream>
 </pkgmetadata>
