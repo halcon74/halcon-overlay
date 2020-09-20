@@ -12,6 +12,9 @@
 		<flag name="system-pulseaudio">Use standard pulseadio libraries provided by the system</flag>
 	</use>
 	<longdescription lang="en">
-		A versatile and powerful photo viewer, image management, image resizer
+		XnView MP is a versatile and powerful photo viewer, image management, image resizer. XnView is one of the most stable, easy-to-use, and comprehensive photo editors. All common picture and graphics formats are supported (JPEG, TIFF, PNG, GIF, WEBP, PSD, JPEG2000, OpenEXR, camera RAW, HEIC, PDF, DNG, CR2).
 	</longdescription>
+	<upstream>
+		<bugs-to>https://newsgroup.xnview.com/viewforum.php?f=93&sid=2925266d0f1a5c0445201852ce47a02d</bugs-to>
+	</upstream>
 </pkgmetadata>

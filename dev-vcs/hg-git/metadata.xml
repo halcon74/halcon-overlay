@@ -9,6 +9,7 @@
 		This is the Hg-Git plugin for Mercurial, adding the ability to push to and pull from a Git server repository from Mercurial. This means you can collaborate on Git based projects from Mercurial, or use a Git server as a collaboration point for a team with developers using both Git and Mercurial. 
 	</longdescription>
 	<upstream>
+		<bugs-to>https://foss.heptapod.net/mercurial/hg-git/-/issues</bugs-to>
 		<remote-id type="pypi">hg-git</remote-id>
 	</upstream>
 </pkgmetadata>
