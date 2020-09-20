@@ -6,7 +6,7 @@
 		<name>Alexey Mishustin</name>
 	</maintainer>
 	<longdescription lang="en">
-		Real-time web framework
+		Mojolicious is a fresh take on Perl web development, based on years of experience developing the Catalyst framework, and utilizing the latest web standards and technologies. You can get started with your project quickly, with a framework that grows with your needs.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/mojolicious/mojo/issues</bugs-to>
