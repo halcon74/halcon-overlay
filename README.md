@@ -12,6 +12,13 @@ If you find a bug, please feel free to report it.
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8).
 
 #### How to add the overlay:
+
+* using Mercurial (possible with Portage >=3.0.8)
+  
+eselect repository add halcon-overlay mercurial https://hg.osdn.net/view/halcon-overlay/code
+emerge --sync halcon-overlay  
+
+* using Git
   
 eselect repository add halcon-overlay git https://github.com/halcon74/halcon-overlay.git  
 emerge --sync halcon-overlay  
