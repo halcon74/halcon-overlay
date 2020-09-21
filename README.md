@@ -13,15 +13,20 @@ If you find a bug, please feel free to report it.
 
 #### How to add the overlay:
 
-* using Mercurial (possible with Portage >=3.0.8)
+* using Mercurial, from OSDN (possible with Portage >=3.0.8)
   
 eselect repository add halcon-overlay mercurial https://hg.osdn.net/view/halcon-overlay/code  
 emerge --sync halcon-overlay  
 
-* using Git
+* using Git, from GitHub
   
 eselect repository add halcon-overlay git https://github.com/halcon74/halcon-overlay.git  
 emerge --sync halcon-overlay  
+
+#### I push the commits (via hg-git) simultaneously to:
+
+* Mercurial repository on OSDN - https://osdn.net/projects/halcon-overlay/scm/hg/code/tree/tip/
+* Git repository on GitHub - https://github.com/halcon74/halcon-overlay
 
 #### Gentoo Quality Assurance:
 
@@ -34,9 +39,3 @@ RepoMan sez: "If everyone were like you, I'd be out of business!"
   
 app-text/evince  
   PotentialStable: version 3.34.2: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~arm64, ~ia64, ~ppc, ~ppc64, ~sparc ]  
-
-#### I push the commits (via hg-git) simultaneously to:
-
-* Mercurial repository - https://osdn.net/projects/halcon-overlay/scm/hg/code/tree/tip/
-* Git repository - https://github.com/halcon74/halcon-overlay
- 
