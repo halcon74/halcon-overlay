@@ -32,4 +32,3 @@ app-text/evince
 
 * Mercurial repository - https://osdn.net/projects/halcon-overlay/scm/hg/code/tree/tip/
 * Git repository - https://github.com/halcon74/halcon-overlay
- 
