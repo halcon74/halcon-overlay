@@ -39,3 +39,4 @@ RepoMan sez: "If everyone were like you, I'd be out of business!"
   
 app-text/evince  
   PotentialStable: version 3.34.2: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~arm64, ~ia64, ~ppc, ~ppc64, ~sparc ]  
+
