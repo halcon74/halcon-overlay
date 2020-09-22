@@ -5,7 +5,7 @@
 		<description>Personal overlay of Alexey Mishustin</description>
 		<homepage>https://github.com/halcon74/halcon-overlay</homepage>
 		<owner type="person">
-			<email>shumkar@shumkar.ru</email>
+			<email>halcon@tuta.io</email>
 			<name>Alexey Mishustin</name>
 		</owner>
 		<source type="git">https://github.com/halcon74/halcon-overlay.git</source>
