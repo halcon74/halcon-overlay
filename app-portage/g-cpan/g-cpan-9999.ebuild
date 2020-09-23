@@ -54,11 +54,6 @@ src_install() {
 	keepdir "/var/log/g-cpan"
 }
 
-src_test() {
-	elog "EROOT=${EROOT}"
-	default
-}
-
 pkg_postinst() {
 	elog "If you want to use g-cpan as non root user you may wish to adjust"
 	elog "the permissions on /var/tmp/g-cpan or add users to the portage group."
