@@ -5,6 +5,7 @@ If you find a bug, please feel free to report it.
 
 #### PACKAGES:
 
+* app-portage/g-cpan - So far for testing/learning purposes only.
 * app-text/evince - Building evince without gvfs and dbus. And it works!
 * dev-perl/Mojolicious - A "really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
 * dev-vcs/hg-git - A version bump, relatively to the current 0.9.0_rc1 in ::gentoo (19.09.2020). Supports mercurial-5.5.1.
