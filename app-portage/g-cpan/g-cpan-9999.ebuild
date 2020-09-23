@@ -6,7 +6,7 @@ EAPI=7
 inherit perl-module
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/gentoo-perl/g-cpan.git"
+	EGIT_REPO_URI="https://github.com/halcon74/g-cpan.git"
 	inherit git-r3
 	SRC_URI=""
 else
