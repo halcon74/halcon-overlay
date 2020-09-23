@@ -55,7 +55,7 @@ src_install() {
 }
 
 src_test() {
-	elog "EROOT=${ROOT}"
+	elog "EROOT=${EROOT}"
 	default
 }
 
