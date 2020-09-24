@@ -17,7 +17,7 @@ If you find a bug, please feel free to report it.
 * using Mercurial, from OSDN (possible with Portage >=3.0.8)
   
 eselect repository add halcon-overlay mercurial https://hg.osdn.net/view/halcon-overlay/code  
-emerge --sync halcon-overlay  _(this requires dev-vcs/mercurial to be installed)_
+emerge --sync halcon-overlay  _(this requires dev-vcs/mercurial to be installed)_  
 cat "sync-mercurial-pull-extra-opts = '-b default'" >> /etc/portage/repos.conf/eselect-repo.conf _(if you don't do that, you may get unstable branch)_
 
 * using Git, from GitHub
