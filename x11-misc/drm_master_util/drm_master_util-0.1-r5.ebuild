@@ -5,9 +5,7 @@
 # [1] - https://forums.gentoo.org/viewtopic-p-8477816.html#8477816
 # [2] - https://forums.gentoo.org/viewtopic-p-8478388.html#8478388
 
-# Works together with one of the three patches, published on the Gentoo Forum [3] - the one for x11-base/xorg-server; the code of this patch requires drm_master_util.
-# The code of other patches, for x11-drivers/xf86-video-amdgpu and x11-drivers/xf86-video-ati, don't require drm_master_util.
-# So, drm_master_util is useless on machines with AMD and Radeon video cards.
+# Works together with one of the three patches, published on the Gentoo Forum [3]
 # [3] - https://forums.gentoo.org/viewtopic-p-8477654.html#8477654
 
 # No more actual for Linux Kernels >=5.8 [4]
