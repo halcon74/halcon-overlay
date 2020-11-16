@@ -5,6 +5,7 @@ If you find a bug, please feel free to report it.
 
 #### PACKAGES:
 
+* app-misc/Hello_World - A test program that I've written for learning purposes. It just prints 'Hello World!' to STDOUT.
 * app-portage/g-cpan - So far for testing/learning purposes only.
 * app-text/evince - Building evince without gvfs and dbus. And it works!
 * dev-perl/Mojolicious - A "really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
