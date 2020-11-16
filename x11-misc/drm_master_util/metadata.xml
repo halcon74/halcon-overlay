@@ -5,9 +5,6 @@
 		<email>halcon@tuta.io</email>
 		<name>Alexey Mishustin</name>
 	</maintainer>
-	<use>
-		<flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually) (inherited)</flag>
-	</use>
 	<longdescription lang="en">
 		A suid program that helps to implement a workaround for using modesetting driver under rootless xorg. Works together with one of the three patches, published on the Gentoo Forum ( https://forums.gentoo.org/viewtopic-p-8477654.html#8477654 ) - the one for <pkg>x11-base/xorg-server</pkg>; the code of this patch requires drm_master_util. The code of other patches, for <pkg>x11-drivers/xf86-video-amdgpu</pkg> and <pkg>x11-drivers/xf86-video-ati</pkg>, doesn't require drm_master_util. So, drm_master_util is useless on machines with AMD and Radeon video cards. No more actual for Linux Kernels >=5.8.
 	</longdescription>

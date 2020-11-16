@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription lang="en">
+		A test program printing 'Hello World!' to STDOUT.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/halcon74/hello-world</bugs-to>
+		<remote-id type="github">halcon74/hello-world</remote-id>
+	</upstream>
+</pkgmetadata>
