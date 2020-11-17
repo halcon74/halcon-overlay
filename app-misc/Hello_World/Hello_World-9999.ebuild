@@ -39,6 +39,7 @@ src_compile() {
 }
 
 src_install() {
-	escons "${MYSCONS[@]}" install
+MYSCONS+=( INSTALL="1" )
+	escons "${MYSCONS[@]}"
 	einstalldocs
 }
