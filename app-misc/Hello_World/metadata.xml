@@ -6,7 +6,7 @@
 		<name>Alexey Mishustin</name>
 	</maintainer>
 	<longdescription lang="en">
-		 Test program printing 'Hello World!' to STDOUT, that actually turned into an attempt to make a helper for building/installing on different (*nix primarily) OSes via SCons "out-of-the-box" (that is without (distro's) maintainer patches).
+		Test program printing 'Hello World!' to STDOUT, that actually turned into an attempt to make a helper for building/installing on different (*nix primarily) OSes via SCons "out-of-the-box" (that is without (distro's) maintainer patches).
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/halcon74/hello-world</bugs-to>
