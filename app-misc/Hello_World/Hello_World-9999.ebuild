@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit git-r3 python-any-r1 scons-utils toolchain-funcs
 
-DESCRIPTION="A test program printing 'Hello World!' to STDOUT"
+DESCRIPTION="Test program printing 'Hello World!' to STDOUT"
 HOMEPAGE="https://github.com/halcon74/hello-world"
 EGIT_REPO_URI="https://github.com/halcon74/hello-world.git"
 
