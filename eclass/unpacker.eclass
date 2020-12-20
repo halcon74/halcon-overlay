@@ -33,7 +33,7 @@ inherit toolchain-funcs
 # `plzip`, `pdlzip` and `lzip`.  Make sure your choice accepts the "-dc" options.
 # Note: this is meant for users to set, not ebuilds.
 
-# for internal use only (unpack_pdv and unpack_makeself)
+# for internal use only (unpack_pdv, unpack_makeself and unpack_zst)
 find_unpackable_file() {
 	local src=$1
 	if [[ -z ${src} ]] ; then
@@ -328,7 +328,7 @@ unpack_zip() {
 }
 
 # @FUNCTION: unpack_zst
-# @USAGE: <zstd file>
+# @USAGE: <zst file>
 # @DESCRIPTION:
 # Unpack zst archives.
 unpack_zst() {
