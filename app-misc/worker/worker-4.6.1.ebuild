@@ -27,16 +27,13 @@ RDEPEND="x11-libs/libX11
 	openssl? ( dev-libs/openssl )
 	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )"
-DEPEND="${RDEPEND}
-	app-arch/zstd"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README README_LARGEFILES THANKS )
 
 src_unpack() {
 	if [[ -n "${A}" ]]; then
-		local _src=$(find_unpackable_file "${A}")
-		zstd -df "${_src}" -o "${P}.tar"
-		tar -xpf "${P}.tar" -C "${WORKDIR}"
+		unpack_zst "${A}"
 	fi
 }
 
