@@ -357,8 +357,7 @@ _unpacker() {
 		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
 		comp="${UNPACKER_LZIP} -dc" ;;
 	*.zst)
-		zstd -df "${zst}" -o "${P}.tar"
-		tar -xpf "${P}.tar" -C "${WORKDIR}"
+		comp="zstd -dfc" ;;
 	esac
 
 	# then figure out if there are any archiving aspects
