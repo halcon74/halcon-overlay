@@ -6,6 +6,7 @@ If you find a bug, please feel free to report it.
 #### PACKAGES:
 
 * app-misc/Hello_World - Test program that I've written for learning purposes. It just prints 'Hello World!' to STDOUT.
+* app-misc/worker - Version bump, relatively to the (obsolete!) current 3.8.3 in ::gentoo (20.12.2020). The ebuild is significantly re-made.
 * app-portage/g-cpan - So far for testing/learning purposes only.
 * app-text/evince - Building evince without gvfs and dbus. And it works!
 * dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription>
+		Worker is a filemanager for X-Window on UNIX. It's a clone of the filemanager "Directory Opus 4", a very famous program for Amiga-systems.  The dirs and files are shown in two independent panels (similar to MidnightCommander).
+	</longdescription>
+	<use>
+		<flag name="avfs">Enable support for <pkg>sys-fs/avfs</pkg></flag>
+		<flag name="openssl">Enable support for checksumming with <pkg>dev-libs/openssl</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/workerfm/bugs/</bugs-to>
+	</upstream>
+</pkgmetadata>
