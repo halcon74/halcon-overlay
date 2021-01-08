@@ -1,1 +1,3 @@
 =app-misc/worker-4.6.1
+sys-power/pm-quirks
+sys-power/pm-utils

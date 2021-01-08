@@ -1,17 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils multilib
+inherit autotools eutils multilib
 
 DESCRIPTION="Suspend and hibernation utilities"
 HOMEPAGE="https://pm-utils.freedesktop.org/"
-SRC_URI="https://pm-utils.freedesktop.org/releases/${P}.tar.gz"
+SRC_URI="https://github.com/halcon74/pm-utils/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="alsa debug ntp video_cards_intel video_cards_radeon"
+
+RESTRICT="mirror"
 
 vbetool="!video_cards_intel? ( sys-apps/vbetool )"
 RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
@@ -26,32 +28,27 @@ RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
 	video_cards_radeon? ( app-laptop/radeontool )"
 DEPEND="${RDEPEND}"
 
-DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
+DOCS="AUTHORS NEWS pm/HOWTO* README* TODO"
+
+src_unpack() {
+	default
+	mv ${WORKDIR}/pm-utils-${P} ${WORKDIR}/${P} 
+}
 
 src_prepare() {
+	default
+
+	autoreconf --install
+
 	local ignore="01grub"
 	use ntp || ignore+=" 90clock"
 
 	use debug && echo 'PM_DEBUG="true"' > "${T}"/gentoo
 	echo "HOOK_BLACKLIST=\"${ignore}\"" >> "${T}"/gentoo
-
-	epatch \
-		"${FILESDIR}"/${PV}-bluetooth-sync.patch \
-		"${FILESDIR}"/${PV}-disable-sata-alpm.patch \
-		"${FILESDIR}"/${PV}-fix-intel-audio-powersave-hook.patch \
-		"${FILESDIR}"/${PV}-logging-append.patch \
-		"${FILESDIR}"/${PV}-fix-alpm-typo.patch \
-		"${FILESDIR}"/${PV}-inhibit-on-right-status.patch \
-		"${FILESDIR}"/${PV}-ignore-led-failure.patch \
-		"${FILESDIR}"/${PV}-run-hook-logging.patch \
-		"${FILESDIR}"/${PV}-suspend-hybrid.patch \
-		"${FILESDIR}"/${PV}-uswsusp-hibernate-mode.patch \
-		"${FILESDIR}"/${PV}-xfs_buffer_arguments.patch \
-		"${FILESDIR}"/${PV}-echo-n.patch
 }
 
 src_configure() {
-	econf --disable-doc
+	econf
 }
 
 src_install() {

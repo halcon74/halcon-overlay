@@ -12,7 +12,8 @@ If you find a bug, please feel free to report it.
 * dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
 * dev-vcs/hg-git - Version bump, relatively to the current 0.9.0_rc1 in ::gentoo (19.09.2020). Supports mercurial-5.5.1.
 * media-gfx/xnviewmp-bin - Attempt to build XnViewMP with system libraries. So far unsuccessful...
-* sys-power/pm-utils - Copy of the ebuild and of all the patches of pm-utils in ::gentoo, after the announcement about its last-riting (07.01.2021).
+* sys-power/pm-quirks - Dependency for sys-power/pm-utils
+* sys-power/pm-utils - New version, from my fork, with all ::gentoo patches (existed before last-riting) added.
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8).
 
 #### How to add the overlay:
