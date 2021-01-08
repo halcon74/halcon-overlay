@@ -38,7 +38,7 @@ src_unpack() {
 src_prepare() {
 	default
 
-	autoreconf --install
+	eautoreconf
 
 	local ignore="01grub"
 	use ntp || ignore+=" 90clock"
