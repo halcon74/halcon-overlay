@@ -11,7 +11,7 @@ SRC_URI="https://github.com/halcon74/pm-utils/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="debug video_cards_intel video_cards_radeon"
+IUSE="debug logrotate video_cards_intel video_cards_radeon"
 
 RESTRICT="mirror"
 
@@ -23,6 +23,7 @@ RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
 	sys-power/pm-quirks
 	amd64? ( ${vbetool} )
 	x86? ( ${vbetool} )
+	logrotate? ( app-admin/logrotate )
 	video_cards_radeon? ( app-laptop/radeontool )"
 DEPEND="${RDEPEND}"
 
@@ -58,8 +59,11 @@ src_install() {
 	insinto /etc/pm/config.d
 	doins "${T}"/gentoo
 
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/${PN}.logrotate ${PN} #408091
+	# from pm-utils.spec.in: "no logrotate needed, because only one run of pm-utils is stored" <-- this is not true, I checked it out
+	if use logrotate ; then
+		insinto /etc/logrotate.d
+		newins "${FILESDIR}"/${PN}.logrotate ${PN} #408091
+	fi
 
 	exeinto /usr/$(get_libdir)/${PN}/sleep.d
 	doexe "${FILESDIR}"/sleep.d/50unload_alx
