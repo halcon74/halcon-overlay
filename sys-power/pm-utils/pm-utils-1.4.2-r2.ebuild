@@ -11,7 +11,7 @@ SRC_URI="https://github.com/halcon74/pm-utils/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="debug ntp video_cards_intel video_cards_radeon"
+IUSE="debug video_cards_intel video_cards_radeon"
 
 RESTRICT="mirror"
 
@@ -21,7 +21,6 @@ RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
 	sys-apps/dbus
 	>=sys-apps/util-linux-2.13
 	sys-power/pm-quirks
-	ntp? ( || ( net-misc/ntp net-misc/openntpd ) )
 	amd64? ( ${vbetool} )
 	x86? ( ${vbetool} )
 	video_cards_radeon? ( app-laptop/radeontool )"
@@ -40,7 +39,6 @@ src_prepare() {
 	eautoreconf
 
 	local ignore="01grub"
-	use ntp || ignore+=" 90clock"
 
 	use debug && echo 'PM_DEBUG="true"' > "${T}"/gentoo
 	echo "HOOK_BLACKLIST=\"${ignore}\"" >> "${T}"/gentoo
