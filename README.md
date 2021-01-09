@@ -13,7 +13,7 @@ If you find a bug, please feel free to report it.
 * dev-vcs/hg-git - Version bump, relatively to the current 0.9.0_rc1 in ::gentoo (19.09.2020). Supports mercurial-5.5.1.
 * media-gfx/xnviewmp-bin - Attempt to build XnViewMP with system libraries. So far unsuccessful...
 * sys-power/pm-quirks - Dependency for sys-power/pm-utils.
-* sys-power/pm-utils - Two new versions, from my fork: 1.4.2 and 1.4.3. Re-made ebuilds. **Included all the patches present in ::gentoo before last-riting at January 2021 (1.4.2), non-specific Debian patches and a patch from c2p-overlay (1.4.3); closed Gentoo bugs 666380, 579912, 549848 (1.4.2), 489650, 443530, 703026 and Debian bugs 485443, 659260 (1.4.3)**.
+* sys-power/pm-utils - Two new versions, from my fork: 1.4.2 and 1.4.3. Re-made ebuilds. **Included all the patches present in ::gentoo before last-riting in January 2021 (1.4.2), non-specific Debian patches and a patch from c2p-overlay (1.4.3); closed Gentoo bugs 666380, 579912, 549848 (1.4.2), 489650, 443530, 703026 and Debian bugs 485443, 659260 (1.4.3)**.
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8).
 
 #### How to add the overlay:
