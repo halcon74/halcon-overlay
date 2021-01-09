@@ -60,6 +60,7 @@ src_install() {
 	doins "${T}"/gentoo
 
 	# from pm-utils.spec.in: "no logrotate needed, because only one run of pm-utils is stored" <-- this is not true, I checked it out
+	# I guess, it's due to the patch "Do not clear the log file on each operation, but instead append to it"
 	if use logrotate ; then
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/${PN}.logrotate ${PN} #408091
