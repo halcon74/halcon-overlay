@@ -19,10 +19,10 @@ RESTRICT="mirror"
 
 vbetool="!video_cards_intel? ( sys-apps/vbetool )"
 RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
+	!sys-power/pm-quirks
 	!sys-power/powermgmt-base[-pm-utils(+)]
 	sys-apps/dbus
 	>=sys-apps/util-linux-2.13
-	sys-power/pm-quirks
 	amd64? ( ${vbetool} )
 	x86? ( ${vbetool} )
 	logrotate? ( app-admin/logrotate )
@@ -37,7 +37,6 @@ src_prepare() {
 	eautoreconf
 
 	local ignore="01grub"
-
 	use debug && echo 'PM_DEBUG="true"' > "${T}"/gentoo
 	echo "HOOK_BLACKLIST=\"${ignore}\"" >> "${T}"/gentoo
 }
@@ -48,6 +47,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	doman man/*.{1,8}
 
 	insinto /etc/pm/config.d
