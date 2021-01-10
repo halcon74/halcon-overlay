@@ -59,12 +59,6 @@ src_install() {
 		doins logrotate/${PN} #408091
 	fi
 
-	# No longer required with current networkmanager (rm -f from debian/rules)
-	rm -f "${ED}"/usr/$(get_libdir)/${PN}/sleep.d/55NetworkManager
-
-	# No longer required with current kernels (rm -f from debian/rules)
-	rm -f "${ED}"/usr/$(get_libdir)/${PN}/sleep.d/49bluetooth
-
 	# Punt HAL related file wrt #401257 (rm -f from debian/rules)
 	rm -f "${ED}"/usr/$(get_libdir)/${PN}/power.d/hal-cd-polling
 
