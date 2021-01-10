@@ -11,7 +11,7 @@ SRC_URI="https://github.com/halcon74/pm-utils/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="debug logrotate video_cards_intel video_cards_radeon"
+IUSE="debug +logrotate video_cards_intel video_cards_radeon"
 
 RESTRICT="mirror"
 
@@ -27,7 +27,7 @@ RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
 	video_cards_radeon? ( app-laptop/radeontool )"
 DEPEND="${RDEPEND}"
 
-DOCS="AUTHORS NEWS pm/HOWTO* README* TODO"
+DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
 
 src_unpack() {
 	default
