@@ -45,6 +45,12 @@ src_configure() {
 	econf
 }
 
+src_compile() {
+	default
+	
+	make ChangeLog
+}
+
 src_install() {
 	default
 
