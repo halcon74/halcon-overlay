@@ -59,13 +59,6 @@ src_install() {
 		doins logrotate/${PN} #408091
 	fi
 
-	# Punt HAL related file wrt #401257 (rm -f from debian/rules)
-	rm -f "${ED}"/usr/$(get_libdir)/${PN}/power.d/hal-cd-polling
-
-	# Punt hooks which have shown to not reduce, or even increase power usage
-	# (rm -f from debian rules)
-	rm -f "${ED}"/usr/$(get_libdir)/${PN}/power.d/{journal-commit,readahead}
-
 	# Remove hooks which are not stable enough yet (rm -f from debian/rules)
 	rm -f "${ED}"/usr/$(get_libdir)/${PN}/power.d/harddrive
 
