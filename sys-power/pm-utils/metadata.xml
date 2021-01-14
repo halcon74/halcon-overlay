@@ -5,7 +5,4 @@
 		<email>halcon@tuta.io</email>
 		<name>Alexey Mishustin</name>
 	</maintainer>
-	<use>
-		<flag name="ntp">Install support for <pkg>net-misc/ntp</pkg></flag>
-	</use>
 </pkgmetadata>

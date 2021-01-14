@@ -2,17 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils git-r3
+inherit autotools eutils
 
 DESCRIPTION="Suspend and hibernation utilities"
 HOMEPAGE="https://pm-utils.freedesktop.org/"
-
-EGIT_REPO_URI="https://github.com/halcon74/pm-utils.git"
-EGIT_BRANCH="pm-utils-1.4"
+SRC_URI="https://github.com/halcon74/pm-utils/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="debug +logrotate video_cards_intel video_cards_radeon"
 
 RESTRICT="mirror"
@@ -30,6 +28,11 @@ RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
+
+src_unpack() {
+	default
+	mv ${WORKDIR}/pm-utils-${P} ${WORKDIR}/${P} 
+}
 
 src_prepare() {
 	default
