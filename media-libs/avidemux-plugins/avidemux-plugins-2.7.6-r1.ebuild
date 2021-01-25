@@ -16,6 +16,7 @@ SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> avidemux-${
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.7"
 IUSE="a52 aac aften alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt5 truetype twolame vdpau vorbis vpx x264 x265 xv xvid"
+RESTRICT="mirror"
 KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
