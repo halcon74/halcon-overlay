@@ -9,6 +9,6 @@
 		<flag name="logrotate">Install logrotate.d file</flag>
 	</use>
 	<longdescription lang="en">
-		
+		A small collection of scripts that handle suspend/hibernation/resume (a fork of the original pm-utils version from freedesktop.org, made after last-riting pm-utils in ::Gentoo in January 2021).
 	</longdescription>
 </pkgmetadata>
