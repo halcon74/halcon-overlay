@@ -54,10 +54,6 @@ src_configure() {
 		$(use_enable xft)
 }
 
-src_compile() {
-	emake
-}
-
 src_install() {
 	default
 
