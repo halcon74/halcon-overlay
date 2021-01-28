@@ -13,7 +13,7 @@
 
 EAPI=7
 
-inherit toolchain
+inherit toolchain-funcs
 
 DESCRIPTION="Non-root Xorg and modesetting driver on Gentoo or any non-systemd system"
 HOMEPAGE="https://ch1p.io/non-root-xorg-modesetting/ https://github.com/gch1p/drm_master_util/"
