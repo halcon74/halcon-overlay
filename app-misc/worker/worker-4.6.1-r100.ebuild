@@ -34,6 +34,8 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README README_LARGEFILES THANKS )
 
 src_configure() {
+	# https://bugs.gentoo.org/709450
+	sed -i -r 's/appdatadir = \$\(datadir\)\/appdata/appdatadir = \$\(datadir\)\/metainfo/g' contrib/Makefile.in
 	# there is no ./configure flag to disable libXinerama support
 	export ac_cv_lib_Xinerama_XineramaQueryScreens=$(usex xinerama)
 	# there is no ./configure flag to disable openssl support
@@ -51,7 +53,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1
+	emake
 }
 
 src_install() {
