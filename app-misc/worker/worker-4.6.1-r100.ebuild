@@ -33,12 +33,6 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README README_LARGEFILES THANKS )
 
-src_unpack() {
-	if [[ -n "${A}" ]]; then
-		unpack_zst "${A}"
-	fi
-}
-
 src_configure() {
 	# there is no ./configure flag to disable libXinerama support
 	export ac_cv_lib_Xinerama_XineramaQueryScreens=$(usex xinerama)
