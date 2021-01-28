@@ -35,7 +35,7 @@ DOCS=( AUTHORS ChangeLog INSTALL NEWS README README_LARGEFILES THANKS )
 
 src_configure() {
 	# https://bugs.gentoo.org/709450
-	sed -i -r 's/appdatadir = \$\(datadir\)\/appdata/appdatadir = \$\(datadir\)\/metainfo/g' contrib/Makefile.in
+	sed -i -r 's/appdatadir = \$\(datadir\)\/appdata/appdatadir = \$\(datadir\)\/metainfo/g' contrib/Makefile.in || die
 	# there is no ./configure flag to disable libXinerama support
 	export ac_cv_lib_Xinerama_XineramaQueryScreens=$(usex xinerama)
 	# there is no ./configure flag to disable openssl support
