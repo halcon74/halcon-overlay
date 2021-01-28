@@ -38,16 +38,18 @@ emerge --sync halcon-overlay
 
 * /var/db/repos/halcon-overlay # repoman -dx full
   
-RepoMan scours the neighborhood...
-  dependency.deprecated         2
-   media-gfx/xnviewmp-bin/xnviewmp-bin-0.96.5.ebuild: 'dev-qt/qtwebkit:5[qml]'
-   media-gfx/xnviewmp-bin/xnviewmp-bin-0.96.5.ebuild: 'dev-qt/qtwebkit:5[opengl]'
-RepoMan sez: "You're only giving me a partial QA payment?
-              I'll take it this time, but I'm not happy."
-
+RepoMan scours the neighborhood...  
+  dependency.deprecated         2  
+   media-gfx/xnviewmp-bin/xnviewmp-bin-0.96.5.ebuild: 'dev-qt/qtwebkit:5[qml]'  
+   media-gfx/xnviewmp-bin/xnviewmp-bin-0.96.5.ebuild: 'dev-qt/qtwebkit:5[opengl]'  
+  
+RepoMan sez: "You're only giving me a partial QA payment?  
+              I'll take it this time, but I'm not happy."  
+  
 * /var/db/repos/halcon-overlay # pkgcheck scan
-app-misc/worker
-  PotentialStable: version 4.6.1-r100: slot(0), stabled arches: [ ppc, x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc64 ]
-
-app-text/evince
-  PotentialStable: version 3.34.2: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~arm64, ~ia64, ~ppc, ~ppc64, ~sparc ]
+  
+app-misc/worker  
+  PotentialStable: version 4.6.1-r100: slot(0), stabled arches: [ ppc, x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc64 ]  
+  
+app-text/evince  
+  PotentialStable: version 3.34.2: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~arm64, ~ia64, ~ppc, ~ppc64, ~sparc ]  
