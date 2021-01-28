@@ -31,7 +31,7 @@ DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
 
 src_unpack() {
 	default
-	mv ${WORKDIR}/pm-utils-${P} ${WORKDIR}/${P} 
+	mv "${WORKDIR}"/pm-utils-"${P}" "${WORKDIR}"/"${P} "
 }
 
 src_prepare() {
@@ -50,7 +50,7 @@ src_configure() {
 
 src_compile() {
 	default
-	
+
 	make ChangeLog
 }
 
@@ -63,16 +63,16 @@ src_install() {
 	doins "${T}"/gentoo
 
 	if use logrotate ; then
-		mv debian/${PN}.logrotate debian/${PN}
+		mv debian/"${PN}".logrotate debian/"${PN}"
 		insinto /etc/logrotate.d
-		doins debian/${PN} #408091
+		doins debian/"${PN}" #408091
 	fi
 
 	rm -rf "${ED}"/etc/video-quirks
 
 	# Remove hooks which are not stable enough yet (rm -f from debian/rules)
-	rm -f "${ED}"/usr/$(get_libdir)/${PN}/power.d/harddrive
+	rm -f "${ED}"/usr/$(get_libdir)/"${PN}"/power.d/harddrive
 
 	# Change to executable (chmod +x from debian/rules)
-	fperms +x /usr/$(get_libdir)/${PN}/defaults
+	fperms +x /usr/$(get_libdir)/"${PN}"/defaults
 }

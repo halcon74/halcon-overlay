@@ -5,4 +5,10 @@
 		<email>halcon@tuta.io</email>
 		<name>Alexey Mishustin</name>
 	</maintainer>
+	<use>
+		<flag name="logrotate">Install logrotate.d file</flag>
+	</use>
+	<longdescription lang="en">
+		
+	</longdescription>
 </pkgmetadata>

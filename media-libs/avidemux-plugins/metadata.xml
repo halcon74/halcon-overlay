@@ -17,7 +17,7 @@
 		<flag name="x265">Enables HEVC support with <pkg>media-libs/x265</pkg>.</flag>
 	</use>
 	<longdescription lang="en">
-		This package should be merged with media-video/avidemux. From <url>http://www.avidemux.org/admWiki/doku.php?id=build:install_2.6</url>: "Everything is a module in 2.6, so without plugins you can't do anything. The plugins either belong to the common part (they work with all UIs) or a specific part (they only work with one)."
+		This package should be merged with media-video/avidemux. From https://www.avidemux.org/admWiki/doku.php?id=build:install_2.6: "Everything is a module in 2.6, so without plugins you can't do anything. The plugins either belong to the common part (they work with all UIs) or a specific part (they only work with one)."
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">avidemux</remote-id>
