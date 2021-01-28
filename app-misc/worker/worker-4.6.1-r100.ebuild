@@ -23,7 +23,7 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RDEPEND="x11-libs/libX11
 	avfs? ( >=sys-fs/avfs-0.9.5 )
 	dbus? ( dev-libs/dbus-glib )
-       lua? ( ${LUA_DEPS} )
+	lua? ( ${LUA_DEPS} )
 	magic? ( sys-apps/file )
 	openssl? ( dev-libs/openssl )
 	xft? ( x11-libs/libXft )
