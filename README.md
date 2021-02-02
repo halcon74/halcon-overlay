@@ -17,7 +17,7 @@ If you find a bug, please feel free to report it.
 * sys-power/pm-utils - New version, from my fork. Re-made ebuild. Included all the patches present in ::gentoo before last-riting in January 2021, non-specific Debian patches and a patch from c2p-overlay. Included all the additional files from Gentoo/Debian (the same). Deleted obsolete files which were being removed by Gentoo ebuild / Debian rules. Included pm-quirks. Fixed Gentoo bugs 666380, 579912, 549848, 489650, 443530, 703026 and Debian bugs 485443, 659260.
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8).  
   
-If you need one of the [MASKED] ebuilds, you could unmask them in your /etc/portage directory.
+If you need one of the [MASKED] ebuilds, you could unmask it in your /etc/portage directory.
 
 #### How to add the overlay:
 
