@@ -9,6 +9,7 @@ If you find a bug, please feel free to report it.
 * app-misc/worker - Version bump, relatively to the (obsolete) current 3.8.3 in ::gentoo (20.12.2020). The ebuild is significantly re-made.
 * app-portage/g-cpan - So far for testing/learning purposes only.
 * app-text/evince - Building evince without gvfs and dbus. And it works! [MASKED], as I don't neither use nor maintain this ebuild anymore.
+* dev-perl/JSON - Version bump, relatively to the (obsolete) current 2.940.0 in ::gentoo (03.02.2021). 
 * dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
 * dev-perl/String-Format - Fixed Gentoo bug 715140. Version bump, relatively to the (obsolete) current 1.170.0 in ::gentoo (02.02.2021). The bump is important because String-Format-1.170.0 will not work in the next perl version (5.32). All its reverse dependencies, including Perl-Critic, won't work either. (Perl-Critic warns about it.)
 * dev-vcs/hg-git - Version bump, relatively to the current 0.9.0_rc1 in ::gentoo (19.09.2020). Supports mercurial-5.5.1. [MASKED], as this ebuild has already been uploaded to ::gentoo. 

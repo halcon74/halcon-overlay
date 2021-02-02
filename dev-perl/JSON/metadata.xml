@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription lang="en">
+		Thin wrapper for <pkg>JSON::XS</pkg>-compatible modules with a few additional features. When JSON::XS is not available, this module falls back on JSON::PP, if that is not available either - to JSON::backportPP.
+	</longdescription>
+	<use>
+		<flag name="xs">Install C-based <pkg>dev-perl/JSON-XS</pkg> for faster performance</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpan">JSON</remote-id>
+		<remote-id type="cpan-module">JSON</remote-id>
+		<remote-id type="cpan-module">JSON::PP5005</remote-id>
+		<remote-id type="cpan-module">JSON::PP56</remote-id>
+		<remote-id type="cpan-module">JSON::Backend::PP</remote-id>
+		<remote-id type="cpan-module">JSON::PP::Boolean</remote-id>
+	</upstream>
+</pkgmetadata>
