@@ -24,8 +24,9 @@ KEYWORDS=""
 IUSE="test minimal"
 
 RESTRICT="
-mirror
-!test? ( test )"
+	mirror
+	!test? ( test )
+"
 
 MY_GIT_DIR=''
 
