@@ -49,6 +49,9 @@ RepoMan sez: "You're only giving me a partial QA payment?
   
 * /var/db/repos/halcon-overlay # pkgcheck scan
   
+dev-perl/String-Format  
+  PotentialStable: version 1.180: slot(0), stabled arches: [ amd64, ppc, sparc, x86 ], potentials: [ ~alpha, ~ppc64 ]  
+  
 app-misc/worker  
   PotentialStable: version 4.6.1-r100: slot(0), stabled arches: [ ppc, x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc64 ]  
   
