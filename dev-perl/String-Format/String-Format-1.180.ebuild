@@ -3,15 +3,17 @@
 
 EAPI=7
 
-DIST_AUTHOR=SREZIC
-DIST_VERSION=1.18
+DIST_AUTHOR="SREZIC"
+DIST_VERSION="1.18"
 inherit perl-module
 
 DESCRIPTION="sprintf-like string formatting capabilities with arbitrary format definitions"
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="test"
+RESTRICT="
+	mirror
+	!test? ( test )
+"
 KEYWORDS="~alpha amd64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-IUSE=""
-
-SRC_TEST="do"
