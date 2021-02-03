@@ -21,7 +21,7 @@ EGIT_BRANCH="master"
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="test minimal"
+IUSE="examples test minimal"
 
 RESTRICT="
 	mirror
