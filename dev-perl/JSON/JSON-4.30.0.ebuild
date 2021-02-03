@@ -8,6 +8,7 @@ DIST_VERSION="4.03"
 inherit perl-module
 
 DESCRIPTION="JSON (JavaScript Object Notation) encoder/decoder"
+HOMEPAGE="https://github.com/makamaka/JSON"
 DIST_EXAMPLES=("eg/*")
 
 SLOT="0"

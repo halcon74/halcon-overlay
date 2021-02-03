@@ -8,6 +8,7 @@ DIST_VERSION="1.18"
 inherit perl-module
 
 DESCRIPTION="sprintf-like string formatting capabilities with arbitrary format definitions"
+HOMEPAGE="https://github.com/dlc/string--format"
 
 LICENSE="GPL-2"
 SLOT="0"
