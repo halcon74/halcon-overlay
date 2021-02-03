@@ -22,7 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 
 RDEPEND=""
 
-# There is a bug in the distribution meta.yml, there is written ExtUtils::MakeMaker: 6.5, but actually Module::Install is used
+# There is a bug in the distribution's meta.yml: ExtUtils::MakeMaker: 6.5 is indicated as dependency, but actually Module::Install is used
 DEPEND="${RDEPEND}
 	dev-perl/Module-Install
 	virtual/perl-File-Temp
