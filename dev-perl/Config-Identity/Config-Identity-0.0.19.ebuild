@@ -21,12 +21,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 RDEPEND="
 	virtual/perl-Carp
 	virtual/perl-File-Spec
-
 	dev-perl/File-HomeDir
 	dev-perl/File-Which
 	dev-perl/IPC-Run
 "
 DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.170.0
-	test? ( virtual/perl-Test-Simple dev-perl/Test-Deep )
+	test? (
+		virtual/perl-Test-Simple
+		dev-perl/Test-Deep
+	)
 "

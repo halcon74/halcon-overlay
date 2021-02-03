@@ -24,7 +24,10 @@ RDEPEND=""
 
 # There is a bug in the distribution's meta.yml: ExtUtils::MakeMaker: 6.5 is indicated as dependency, but actually Module::Install is used
 DEPEND="${RDEPEND}
-	dev-perl/Module-Install
 	virtual/perl-File-Temp
-	test? ( virtual/perl-Test-Simple dev-perl/Test-Requires )
+	dev-perl/Module-Install
+	test? (
+		virtual/perl-Test-Simple
+		dev-perl/Test-Requires
+	)
 "

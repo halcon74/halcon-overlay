@@ -30,9 +30,7 @@ RESTRICT="
 MY_GIT_DIR=''
 
 RDEPEND="
-	!minimal? (
-		>=dev-perl/EV-4.0.0
-	)
+	!minimal? ( >=dev-perl/EV-4.0.0 )
 	>=virtual/perl-IO-Socket-IP-0.370.0
 	>=virtual/perl-JSON-PP-2.271.30
 	>=virtual/perl-Pod-Simple-3.90.0
