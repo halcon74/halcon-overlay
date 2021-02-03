@@ -23,6 +23,7 @@ RDEPEND="xs? ( >=dev-perl/JSON-XS-2.340.0 )"
 
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
+	test? ( virtual/perl-Test-Simple )
 "
 
 src_test() {
