@@ -22,7 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 
 RDEPEND="
 	virtual/perl-Encode
-	>=virtual/perl-Exporter-5.570
+	>=virtual/perl-Exporter-5.570.0
 	virtual/perl-parent
 
 	dev-perl/Types-Serialiser
@@ -30,10 +30,10 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	virtual/perl-MIME-Base64
-	>=virtual/perl-Storable-2.380
-	>=dev-perl/Module-Build-Tiny-0.35
+	>=virtual/perl-Storable-2.380.0
+	>=dev-perl/Module-Build-Tiny-0.35.0
 	test? ( 
-		>=virtual/perl-Test-Simple-0.980
+		>=virtual/perl-Test-Simple-0.980.0
 		dev-perl/Test-Deep
 		dev-perl/Test-Deep-Fuzzy
 		)
