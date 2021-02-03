@@ -40,9 +40,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
-	test? (
-		virtual/perl-Test-Simple
-	)
+	test? ( virtual/perl-Test-Simple	)
 "
 
 src_unpack() {
