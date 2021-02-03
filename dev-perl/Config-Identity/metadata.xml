@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription lang="en">
+		Tool for loading (and optionally decrypting via GnuPG) user/pass identity information. For GitHub API access, an identity is a "login"/"token" pair. For PAUSE access, an identity is a "user"/"password" pair.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpan">Config-Identity</remote-id>
+		<remote-id type="cpan-module">Config::Identity</remote-id>
+		<remote-id type="cpan-module">Config::Identity::GitHub</remote-id>
+		<remote-id type="cpan-module">Config::Identity::PAUSE</remote-id>
+	</upstream>
+</pkgmetadata>
