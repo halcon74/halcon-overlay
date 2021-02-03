@@ -10,11 +10,13 @@ If you find a bug, please feel free to report it.
 * app-portage/g-cpan - So far for testing/learning purposes only.
 * app-text/evince - Building evince without gvfs and dbus. And it works! [MASKED], as I don't neither use nor maintain this ebuild anymore.
 * dev-perl/JSON - Version bump, relatively to the (obsolete) current 2.940.0 in ::gentoo (03.02.2021). 
-* dev-perl/Config-Identity - Dependency for Minilla ecosystem. Absent in ::gentoo.  
-* dev-perl/Data-Section-Simple - Dependency for Minilla ecosystem. Absent in ::gentoo.  
+* dev-perl/Config-Identity - Dependency for Minilla. Absent in ::gentoo.  
+* dev-perl/Data-Section-Simple - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
 * dev-perl/String-Format - Fixed Gentoo bug 715140. Version bump, relatively to the (obsolete) current 1.170.0 in ::gentoo (02.02.2021). The bump is important because String-Format-1.170.0 will not work in the next perl version (5.32). All its reverse dependencies, including Perl-Critic, won't work either. (Perl-Critic warns about it.)
-* dev-perl/Text-MicroTemplate - Dependency for Minilla ecosystem. Absent in ::gentoo.  
+* dev-perl/Text-MicroTemplate - Dependency for Minilla. Absent in ::gentoo.  
+* dev-perl/TOML - Dependency for Minilla. Absent in ::gentoo.  
+* dev-perl/TOML-Parser - Dependency for Minilla. Absent in ::gentoo.  
 * dev-vcs/hg-git - Version bump, relatively to the current 0.9.0_rc1 in ::gentoo (19.09.2020). Supports mercurial-5.5.1. [MASKED], as this ebuild has already been uploaded to ::gentoo. 
 * media-gfx/xnviewmp-bin - Attempt to build XnViewMP with system libraries. So far unsuccessful... [MASKED], as this ebuild is not yet ready. Absent in ::gentoo.  
 * media-libs/avidemux-plugins - Fixed Gentoo bug 744859. Lets to get rid of dev-lang/spidermonkey and of python 2.7.
