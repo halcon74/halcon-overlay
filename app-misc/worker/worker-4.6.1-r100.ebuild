@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/workerfm/${P}.tar.zst"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE="avfs debug dbus examples libnotify lua +magic openssl xinerama +xft"
 
 RESTRICT="mirror"
