@@ -3,14 +3,14 @@
 
 EAPI=7
 
+inherit perl-module
+
 DIST_AUTHOR="ISHIGAKI"
 DIST_VERSION="4.03"
 DIST_EXAMPLES=("eg/*")
-inherit perl-module
 
 DESCRIPTION="JSON (JavaScript Object Notation) encoder/decoder"
 
-LICENSE="GPL-2"
 SLOT="0"
 IUSE="examples test +xs"
 RESTRICT="
@@ -18,7 +18,6 @@ RESTRICT="
 	!test? ( test )
 "
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-
 
 RDEPEND="xs? ( >=dev-perl/JSON-XS-2.340.0 )"
 
