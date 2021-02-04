@@ -6,7 +6,7 @@
 		<name>Alexey Mishustin</name>
 	</maintainer>
 	<longdescription lang="en">
-		Thin wrapper for <pkg>dev-perl/JSON-XS</pkg>-compatible modules with a few additional features. When <pkg>dev-perl/JSON-XS</pkg> is not available, this module falls back on <pkg>dev-perl/JSON-PP</pkg>, if that is not available either - to JSON::backportPP.
+		Thin wrapper for <pkg>dev-perl/JSON-XS</pkg>-compatible modules with a few additional features. When <pkg>dev-perl/JSON-XS</pkg> is not available, this module falls back on JSON::PP, if that is not available either - to JSON::backportPP.
 	</longdescription>
 	<use>
 		<flag name="xs">Install C-based <pkg>dev-perl/JSON-XS</pkg> for faster performance</flag>

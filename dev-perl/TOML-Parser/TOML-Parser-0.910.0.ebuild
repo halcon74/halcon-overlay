@@ -18,7 +18,7 @@ RESTRICT="
 	mirror
 	!test? ( test )
 "
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
 	virtual/perl-Encode
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	virtual/perl-MIME-Base64
 	>=virtual/perl-Storable-2.380.0
 	>=dev-perl/Module-Build-Tiny-0.35.0
-	test? ( 
+	test? (
 		>=virtual/perl-Test-Simple-0.980.0
 		dev-perl/Test-Deep
 		dev-perl/Test-Deep-Fuzzy

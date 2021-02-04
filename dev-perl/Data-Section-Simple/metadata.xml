@@ -6,7 +6,7 @@
 		<name>Alexey Mishustin</name>
 	</maintainer>
 	<longdescription lang="en">
-		Simple module to extract data from __DATA__ section of the file. As the name suggests, this module is a simpler version of the excellent <pkg>Data-Section</pkg>. If you want more functionalities such as merging data sections or changing header patterns, use <pkg>Data-Section</pkg> instead.
+		Simple module to extract data from __DATA__ section of the file. As the name suggests, this module is a simpler version of the excellent <pkg>dev-perl/Data-Section</pkg>. If you want more functionalities such as merging data sections or changing header patterns, use <pkg>dev-perl/Data-Section</pkg> instead.
 	</longdescription>
 	<upstream>
 		<remote-id type="cpan">Data-Section-Simple</remote-id>

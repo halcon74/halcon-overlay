@@ -18,7 +18,7 @@ RESTRICT="
 	mirror
 	!test? ( test )
 "
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~m68k ~mips ~s390 ~x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
 	>=virtual/perl-Archive-Tar-1.600.0
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 	dev-perl/File-Copy-Recursive
 	dev-perl/JSON
 	>=dev-perl/Module-Build-Tiny-0.35.0
-	test? ( 
+	test? (
 		>=virtual/perl-Test-Simple-0.980.0
 		dev-perl/Test-Output
 		dev-perl/Test-Requires
