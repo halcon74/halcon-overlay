@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_8 )
 
 inherit distutils-r1
 
-DESCRIPTION="push to and pull from a Git repository using Mercurial"
+DESCRIPTION="Push to and pull from a Git repository using Mercurial"
 HOMEPAGE="https://hg-git.github.io https://pypi.org/project/hg-git/"
 SRC_URI="https://foss.heptapod.net/mercurial/hg-git/-/archive/${PV}/${PN}-${PV}.tar.bz2"
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solari
 IUSE=""
 
 RDEPEND="
-	>=dev-vcs/mercurial-4.3[${PYTHON_USEDEP}]
+	>=dev-vcs/mercurial-5.3.2[${PYTHON_USEDEP}]
 	>=dev-python/dulwich-0.19.0[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}

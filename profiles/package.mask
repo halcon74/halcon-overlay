@@ -4,11 +4,6 @@
 =app-text/evince-3.34.2
 
 # Alexey Mishustin <halcon@tuta.io> (2021-02-02)
-# This ebuild has already been uploaded to ::gentoo.
-# If it is actual for you, please unmask it in your /etc/portage directory.
-=dev-vcs/hg-git-0.9.0
-
-# Alexey Mishustin <halcon@tuta.io> (2021-02-02)
 # This ebuild is not yet ready.
 # If it is actual for you, please unmask it in your /etc/portage directory.
 =media-gfx/xnviewmp-bin-0.96.5
