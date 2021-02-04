@@ -66,3 +66,4 @@ app-misc/worker
   
 dev-perl/Test-Deep-Fuzzy  
   RedundantLongDescription: metadata.xml longdescription is too short  
+
