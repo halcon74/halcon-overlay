@@ -15,6 +15,7 @@ If you find a bug, please feel free to report it.
 * dev-perl/Minilla - CPAN module authoring tool, recently suggested. Absent in ::gentoo.  
 * dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
 * dev-perl/String-Format - Fixed Gentoo bug 715140. Version bump, relatively to the (obsolete) current 1.170.0 in ::gentoo (02.02.2021). The bump is important because String-Format-1.170.0 will not work in the next perl version (5.32). All its reverse dependencies, including Perl-Critic, won't work either. (Perl-Critic warns about it.)
+* dev-perl/Test-Deep-Fuzzy - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/Text-MicroTemplate - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/TOML - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/TOML-Parser - Dependency for Minilla. Absent in ::gentoo.  
@@ -53,16 +54,15 @@ RepoMan scours the neighborhood...
    media-gfx/xnviewmp-bin/xnviewmp-bin-0.96.5.ebuild: 'dev-qt/qtwebkit:5[qml]'  
    media-gfx/xnviewmp-bin/xnviewmp-bin-0.96.5.ebuild: 'dev-qt/qtwebkit:5[opengl]'  
   
+Note: use --without-mask to check KEYWORDS on dependencies of masked packages  
+  
 RepoMan sez: "You're only giving me a partial QA payment?  
               I'll take it this time, but I'm not happy."  
   
 * /var/db/repos/halcon-overlay # pkgcheck scan
   
-dev-perl/String-Format  
-  PotentialStable: version 1.180: slot(0), stabled arches: [ amd64, ppc, sparc, x86 ], potentials: [ ~alpha, ~ppc64 ]  
-  
 app-misc/worker  
-  PotentialStable: version 4.6.1-r100: slot(0), stabled arches: [ ppc, x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc64 ]  
+  PotentialStable: version 4.6.1-r100: slot(0), stabled arch: [ x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc, ~ppc64 ]  
   
-app-text/evince  
-  PotentialStable: version 3.34.2: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~arm64, ~ia64, ~ppc, ~ppc64, ~sparc ]  
+dev-perl/Test-Deep-Fuzzy  
+  RedundantLongDescription: metadata.xml longdescription is too short  
