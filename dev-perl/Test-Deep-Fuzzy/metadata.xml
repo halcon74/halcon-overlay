@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription lang="en">
+		Provides fuzzy number comparison with <pkg>dev-perl/Test-Deep</pkg>.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpan">Test-Deep-Fuzzy</remote-id>
+		<remote-id type="cpan-module">Test::Deep::Fuzzy</remote-id>
+		<remote-id type="cpan-module">Test::Deep::Fuzzy::Number</remote-id>
+	</upstream>
+</pkgmetadata>
