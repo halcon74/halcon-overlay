@@ -36,17 +36,17 @@ DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
 src_prepare() {
 	default
 
-	eautoreconf
-
-	local ignore="01grub"
-	use debug && echo 'PM_DEBUG="true"' > "${T}"/gentoo
-	echo "HOOK_BLACKLIST=\"${ignore}\"" >> "${T}"/gentoo
-
 	local EGIT_COMMIT=$(git rev-parse HEAD)
 	elog "EGIT_COMMIT = ${EGIT_COMMIT}"
 	gemato gpg-wrap -K "/usr/share/openpgp-keys/halcon.asc" -R -- \
 		git verify-commit "${EGIT_COMMIT}" ||
 		die "Git commit verification failed"
+
+	eautoreconf
+
+	local ignore="01grub"
+	use debug && echo 'PM_DEBUG="true"' > "${T}"/gentoo
+	echo "HOOK_BLACKLIST=\"${ignore}\"" >> "${T}"/gentoo
 }
 
 src_configure() {
