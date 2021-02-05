@@ -6,6 +6,6 @@
 		<name>Alexey Mishustin</name>
 	</maintainer>
 	<longdescription lang="en">
-		OpenPGP key used to sign pm-utils (Alexey Mishustin's fork) git commits. Please read verify-sig.eclass for details.
+		OpenPGP key used to sign pm-utils (Alexey Mishustin's fork) git commits. Inspired by https://forums.gentoo.org/viewtopic-p-8570334.html#8570334.
 	</longdescription>
 </pkgmetadata>
