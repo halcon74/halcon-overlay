@@ -17,6 +17,8 @@ IUSE="debug +logrotate video_cards_intel video_cards_radeon"
 
 RESTRICT="mirror"
 
+MY_GIT_DIR=''
+
 vbetool="!video_cards_intel? ( sys-apps/vbetool )"
 RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
 	!sys-power/pm-quirks
@@ -33,13 +35,30 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
 
-src_prepare() {
-	local EGIT_COMMIT=$(git rev-parse HEAD)
+src_unpack() {
+	git-r3_fetch
+
+	# Use a git-r3 internal function to find the long term storage of the local clone. This is probably a bad idea, and the ebuild
+	# should instead take the tag name from the user instead of guessing it.
+	local -x GIT_DIR
+	_git-r3_set_gitdir "$EGIT_REPO_URI"
+	elog "GIT_DIR=${GIT_DIR}"
+
+	local EGIT_COMMIT
+	EGIT_COMMIT=$(cat "${GIT_DIR}"/refs/heads/pm-utils-1.4)
 	elog "EGIT_COMMIT = ${EGIT_COMMIT}"
 	gemato gpg-wrap -K "/usr/share/openpgp-keys/halcon.asc" -R -- \
 		git verify-commit "${EGIT_COMMIT}" ||
 		die "Git commit verification failed"
 
+	# Yes, fetch again, now that EGIT_COMMIT is a specific commit.
+	git-r3_fetch
+	git-r3_checkout
+
+	MY_GIT_DIR="$GIT_DIR"
+}
+
+src_prepare() {
 	default
 
 	eautoreconf
@@ -80,4 +99,9 @@ src_install() {
 
 	# Change to executable (chmod +x from debian/rules)
 	fperms +x /usr/$(get_libdir)/${PN}/defaults
+}
+
+pkg_postinst() {
+	elog "deleting MY_GIT_DIR ${MY_GIT_DIR}..."
+	rm -r "${MY_GIT_DIR}" || die "deleting MY_GIT_DIR failed"
 }
