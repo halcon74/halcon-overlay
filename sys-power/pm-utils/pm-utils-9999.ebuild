@@ -34,13 +34,13 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
 
 src_prepare() {
-	default
-
 	local EGIT_COMMIT=$(git rev-parse HEAD)
 	elog "EGIT_COMMIT = ${EGIT_COMMIT}"
 	gemato gpg-wrap -K "/usr/share/openpgp-keys/halcon.asc" -R -- \
 		git verify-commit "${EGIT_COMMIT}" ||
 		die "Git commit verification failed"
+
+	default
 
 	eautoreconf
 
