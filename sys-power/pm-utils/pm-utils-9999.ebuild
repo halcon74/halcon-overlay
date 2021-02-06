@@ -17,7 +17,8 @@ IUSE="debug +logrotate video_cards_intel video_cards_radeon"
 
 RESTRICT="mirror"
 
-MY_GIT_DIR=''
+MY_GIT_DIR=""
+MY_PUBLIC_OPENPGP_KEY="/usr/share/openpgp-keys/halcon.asc"
 
 vbetool="!video_cards_intel? ( sys-apps/vbetool )"
 RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
@@ -46,7 +47,7 @@ src_unpack() {
 	local EGIT_COMMIT
 	EGIT_COMMIT=$(cat "${GIT_DIR}"/refs/heads/pm-utils-1.4)
 	elog "EGIT_COMMIT = ${EGIT_COMMIT}"
-	gemato gpg-wrap -K "/usr/share/openpgp-keys/halcon.asc" -R -- \
+	gemato gpg-wrap -K "${MY_PUBLIC_OPENPGP_KEY}" -R -- \
 		git verify-commit "${EGIT_COMMIT}" ||
 		die "Git commit verification failed"
 

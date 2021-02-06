@@ -27,7 +27,7 @@ RESTRICT="
 	!test? ( test )
 "
 
-MY_GIT_DIR=''
+MY_GIT_DIR=""
 
 RDEPEND="
 	!minimal? ( >=dev-perl/EV-4.0.0 )
