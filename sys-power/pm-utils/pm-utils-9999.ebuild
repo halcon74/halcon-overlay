@@ -38,8 +38,7 @@ DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
 src_unpack() {
 	git-r3_fetch
 
-	# Use a git-r3 internal function to find the long term storage of the local clone. This is probably a bad idea, and the ebuild
-	# should instead take the tag name from the user instead of guessing it.
+	# Use a git-r3 internal function to find the long term storage of the local clone. This is probably a bad idea...
 	local -x GIT_DIR
 	_git-r3_set_gitdir "$EGIT_REPO_URI"
 	elog "GIT_DIR=${GIT_DIR}"
