@@ -5,6 +5,7 @@ If you find a bug, please feel free to report it.
 
 #### PACKAGES:
 
+* app-crypt/openpgp-keys-pm-utils - Package for testing the functionality of checking git commit signatures in ebuilds. Absent in ::gentoo.  
 * app-misc/Hello_World - Test program that I've written for learning purposes. It just prints 'Hello World!' to STDOUT. Absent in ::gentoo.  
 * app-misc/worker - Version bump, relatively to the (obsolete) current 3.8.3 in ::gentoo (20.12.2020). The ebuild is significantly re-made.
 * app-portage/g-cpan - So far for testing/learning purposes only.
