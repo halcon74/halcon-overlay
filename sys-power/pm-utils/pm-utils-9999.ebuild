@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils git-r3
+inherit autotools eutils git-verify-signature
 
 DESCRIPTION="Suspend and hibernation utilities"
 HOMEPAGE="https://pm-utils.freedesktop.org/"
@@ -17,11 +17,11 @@ IUSE="debug +logrotate video_cards_intel video_cards_radeon"
 
 RESTRICT="mirror"
 
-MY_GIT_DIR=""
-MY_PUBLIC_OPENPGP_KEY="/usr/share/openpgp-keys/halcon.asc"
+VERIFY_GIT_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/halcon.asc"
 
 vbetool="!video_cards_intel? ( sys-apps/vbetool )"
-RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
+RDEPEND="
+	!<app-laptop/laptop-mode-tools-1.55-r1
 	!sys-power/pm-quirks
 	!sys-power/powermgmt-base[-pm-utils(+)]
 	sys-apps/dbus
@@ -29,34 +29,14 @@ RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
 	amd64? ( ${vbetool} )
 	x86? ( ${vbetool} )
 	logrotate? ( app-admin/logrotate )
-	video_cards_radeon? ( app-laptop/radeontool )"
-DEPEND="${RDEPEND}
+	video_cards_radeon? ( app-laptop/radeontool )
+"
+DEPEND="
+	${RDEPEND}
 	>=app-crypt/openpgp-keys-pm-utils-20210206
 "
 
 DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
-
-src_unpack() {
-	git-r3_fetch
-
-	# Use a git-r3 internal function to find the long term storage of the local clone. This is probably a bad idea...
-	local -x GIT_DIR
-	_git-r3_set_gitdir "$EGIT_REPO_URI"
-	elog "GIT_DIR=${GIT_DIR}"
-
-	local EGIT_COMMIT
-	EGIT_COMMIT=$(cat "${GIT_DIR}"/refs/heads/pm-utils-1.4)
-	elog "EGIT_COMMIT = ${EGIT_COMMIT}"
-	gemato gpg-wrap -K "${MY_PUBLIC_OPENPGP_KEY}" -R -- \
-		git verify-commit "${EGIT_COMMIT}" ||
-		die "Git commit verification failed"
-
-	# Yes, fetch again, now that EGIT_COMMIT is a specific commit.
-	git-r3_fetch
-	git-r3_checkout
-
-	MY_GIT_DIR="$GIT_DIR"
-}
 
 src_prepare() {
 	default
@@ -99,9 +79,4 @@ src_install() {
 
 	# Change to executable (chmod +x from debian/rules)
 	fperms +x /usr/$(get_libdir)/${PN}/defaults
-}
-
-pkg_postinst() {
-	elog "deleting MY_GIT_DIR ${MY_GIT_DIR}..."
-	rm -r "${MY_GIT_DIR}" || die "deleting MY_GIT_DIR failed"
 }

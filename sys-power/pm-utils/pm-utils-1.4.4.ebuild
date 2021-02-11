@@ -16,7 +16,8 @@ IUSE="debug +logrotate video_cards_intel video_cards_radeon"
 RESTRICT="mirror"
 
 vbetool="!video_cards_intel? ( sys-apps/vbetool )"
-RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
+RDEPEND="
+	!<app-laptop/laptop-mode-tools-1.55-r1
 	!sys-power/pm-quirks
 	!sys-power/powermgmt-base[-pm-utils(+)]
 	sys-apps/dbus
@@ -24,7 +25,8 @@ RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1
 	amd64? ( ${vbetool} )
 	x86? ( ${vbetool} )
 	logrotate? ( app-admin/logrotate )
-	video_cards_radeon? ( app-laptop/radeontool )"
+	video_cards_radeon? ( app-laptop/radeontool )
+"
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"
