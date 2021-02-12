@@ -65,8 +65,3 @@ src_test() {
 	perl_rm_files t/pod{,_coverage}.t
 	perl-module_src_test
 }
-
-pkg_postinst() {
-	elog "deleting MY_GIT_DIR ${MY_GIT_DIR}..."
-	rm -r "${MY_GIT_DIR}" || die "deleting MY_GIT_DIR failed"
-}
