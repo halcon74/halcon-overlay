@@ -1,13 +1,15 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: verify-sig.eclass
+# @ECLASS: verify-all-sigs.eclass
 # @MAINTAINER:
-# Michał Górny <mgorny@gentoo.org>
+# Alexey Mishustin <halcon@tuta.io>
 # @SUPPORTED_EAPIS: 7
-# @BLURB: Eclass to verify upstream signatures on distfiles
+# @BLURB: Eclass to verify upstream signatures on distfiles 
+# AND git signatures on top commit
 # @DESCRIPTION:
-# verify-sig eclass provides a streamlined approach to verifying
+# verify-all-sigs eclass provides:
+#  - A streamlined approach to verifying
 # upstream signatures on distfiles.  Its primary purpose is to permit
 # developers to easily verify signatures while bumping packages.
 # The eclass removes the risk of developer forgetting to perform
@@ -15,14 +17,24 @@
 # keys in the local keyring.  It also permits users to verify
 # the developer's work.
 #
-# To use the eclass, start by packaging the upstream's key
-# as app-crypt/openpgp-keys-*.  Then inherit the eclass, add detached
+# - The ability to verify the signature on the
+# top commit of repository checked out by git-r3.
+#
+# To use the eclass, start by packaging the upstream's releases/commits keys
+# as app-crypt/openpgp-keys-*.  Then inherit the eclass.
+# For release signatures: add detached releases
 # signatures to SRC_URI and set VERIFY_SIG_OPENPGP_KEY_PATH.  The eclass
 # provides verify-sig USE flag to toggle the verification.
+# For commit signatures: add EGIT_REPO_URI (and  optionally EGIT_BRANCH),
+# set VERIFY_GIT_SIG_OPENPGP_KEY_PATH. The eclass
+# provides verify-git-sig USE flag to toggle the verification.
 #
 # Example use:
 # @CODE
-# inherit verify-sig
+#
+# For release signatures: 
+#
+# inherit verify-all-sigs
 #
 # SRC_URI="https://example.org/${P}.tar.gz
 #   verify-sig? ( https://example.org/${P}.tar.gz.sig )"
@@ -30,6 +42,18 @@
 #   verify-sig? ( app-crypt/openpgp-keys-example )"
 #
 # VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example.asc
+#
+# For commit signatures:
+#
+# inherit verify-all-sigs
+#
+# EGIT_REPO_URI="https://example.org/author/repository.git"
+# EGIT_BRANCH="some-non-default-branch"
+# BDEPEND="
+#   verify-git-sig? ( app-crypt/openpgp-keys-example )"
+#
+# VERIFY_GIT_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example.asc
+#
 # @CODE
 
 case "${EAPI:-0}" in
@@ -43,19 +67,33 @@ case "${EAPI:-0}" in
 		;;
 esac
 
+EXPORT_FUNCTIONS pkg_setup
 EXPORT_FUNCTIONS src_unpack
 
-if [[ ! ${_VERIFY_SIG_ECLASS} ]]; then
+if [[ ! ${_VERIFY_ALL_SIGS_ECLASS} ]]; then
 
-IUSE="verify-sig"
+inherit git-r3
+
+IUSE="verify-sig verify-git-sig"
 
 BDEPEND="
 	verify-sig? (
 		app-crypt/gnupg
 		>=app-portage/gemato-16
+	)
+	verify-git-sig? (
+		app-crypt/gnupg
+		>=app-portage/gemato-16
 	)"
 
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_PATH
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Path to key bundle used to perform the verification.  This is required
+# when using default src_unpack.  Alternatively, the key path can be
+# passed directly to the verification functions.
+
+# @ECLASS-VARIABLE: VERIFY_GIT_SIG_OPENPGP_KEY_PATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Path to key bundle used to perform the verification.  This is required
@@ -77,14 +115,23 @@ BDEPEND="
 # connection.
 : ${VERIFY_SIG_OPENPGP_KEY_REFRESH:=no}
 
-# @FUNCTION: verify-sig_verify_detached
+# @FUNCTION: verify-all-sigs_pkg_setup
+# @DESCRIPTION:
+# Default pkg_setup override for handling mutually exclusive (so far) USE flags.
+verify-all-sigs_pkg_setup() {
+	if use verify-sig && use verify-git-sig; then
+		die "The functionality of verifying both signatures - release and commit - at the same time has not yet been tested"
+	fi
+}
+
+# @FUNCTION: verify-all-sigs_verify_detached
 # @USAGE: <file> <sig-file> [<key-file>]
 # @DESCRIPTION:
 # Read the detached signature from <sig-file> and verify <file> against
 # it.  <key-file> can either be passed directly, or it defaults
 # to VERIFY_SIG_OPENPGP_KEY_PATH.  The function dies if verification
 # fails.
-verify-sig_verify_detached() {
+verify-all-sigs_verify_detached() {
 	local file=${1}
 	local sig=${2}
 	local key=${3:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
@@ -111,7 +158,7 @@ verify-sig_verify_detached() {
 		die "PGP signature verification failed"
 }
 
-# @FUNCTION: verify-sig_verify_message
+# @FUNCTION: verify-all-sigs_verify_message
 # @USAGE: <file> <output-file> [<key-file>]
 # @DESCRIPTION:
 # Verify that the file ('-' for stdin) contains a valid, signed PGP
@@ -120,7 +167,7 @@ verify-sig_verify_detached() {
 # to VERIFY_SIG_OPENPGP_KEY_PATH.  The function dies if verification
 # fails.  Note that using output from <output-file> is important as it
 # prevents the injection of unsigned data.
-verify-sig_verify_message() {
+verify-all-sigs_verify_message() {
 	local file=${1}
 	local output_file=${2}
 	local key=${3:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
@@ -147,7 +194,7 @@ verify-sig_verify_message() {
 		die "PGP signature verification failed"
 }
 
-# @FUNCTION: verify-sig_verify_signed_checksums
+# @FUNCTION: verify-all-sigs_verify_signed_checksums
 # @USAGE: <checksum-file> <algo> <files> [<key-file>]
 # @DESCRIPTION:
 # Verify the checksums for all files listed in the space-separated list
@@ -158,7 +205,7 @@ verify-sig_verify_message() {
 # The function dies if PGP verification fails, the checksum file
 # contains unsigned data, one of the files do not match checksums
 # or are missing from the checksum file.
-verify-sig_verify_signed_checksums() {
+verify-all-sigs_verify_signed_checksums() {
 	local checksum_file=${1}
 	local algo=${2}
 	local files=()
@@ -192,7 +239,7 @@ verify-sig_verify_signed_checksums() {
 		else
 			ret=1
 		fi
-	done < <(verify-sig_verify_message "${checksum_file}" - "${key}")
+	done < <(verify-all-sigs_verify_message "${checksum_file}" - "${key}")
 
 	[[ ${ret} -eq 0 ]] ||
 		die "${FUNCNAME}: at least one file did not verify successfully"
@@ -200,14 +247,35 @@ verify-sig_verify_signed_checksums() {
 		die "${FUNCNAME}: checksums for some of the specified files were missing"
 }
 
-# @FUNCTION: verify-sig_src_unpack
+# @FUNCTION: verify-all-sigs_verify-commit
+# @USAGE: <git-directory> [<key-file>]
+# @DESCRIPTION:
+# Verifies the newest (HEAD) commit in the supplied directory
+# using the supplied key file
+verify-all-sigs_verify-commit() {
+	local git_dir=${1}
+	local key=${2:-${VERIFY_GIT_SIG_OPENPGP_KEY_PATH}}
+	elog "git_dir = ${git_dir}, key = ${key}, 1 = ${1}"
+
+	[[ -n ${key} ]] ||
+		die "${FUNCNAME}: no key passed and VERIFY_GIT_SIG_OPENPGP_KEY_PATH unset"
+
+	local extra_args=( "-R" )
+
+	gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
+		git --work-tree="${git_dir}" --git-dir="${git_dir}"/.git verify-commit HEAD ||
+		die "Git commit verification failed"
+}
+
+# @FUNCTION: verify-all-sigs_src_unpack
 # @DESCRIPTION:
 # Default src_unpack override that verifies signatures for all
-# distfiles if 'verify-sig' flag is enabled.  The function dies if any
+# distfiles if 'verify-sig' flag is enabled __OR__ verifies git commits signatures 
+# on top commit.  The function dies if any
 # of the signatures fails to verify or if any distfiles are not signed.
 # Please write src_unpack() yourself if you need to perform partial
 # verification.
-verify-sig_src_unpack() {
+verify-all-sigs_src_unpack() {
 	if use verify-sig; then
 		local f suffix found
 		local distfiles=() signatures=() nosigfound=() straysigs=()
@@ -258,14 +326,17 @@ verify-sig_src_unpack() {
 
 		# now perform the verification
 		for f in "${signatures[@]}"; do
-			verify-sig_verify_detached \
+			verify-all-sigs_verify_detached \
 				"${DISTDIR}/${f%.*}" "${DISTDIR}/${f}"
 		done
+	elif use verify-git-sig; then
+		git-r3_src_unpack
+		verify-all-sigs_verify-commit "${EGIT_CHECKOUT_DIR:-${WORKDIR}/${P}}"
 	fi
 
 	# finally, unpack the distfiles
 	default_src_unpack
 }
 
-_VERIFY_SIG_ECLASS=1
+_VERIFY_ALL_SIGS_ECLASS=1
 fi
