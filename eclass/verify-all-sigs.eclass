@@ -9,6 +9,7 @@
 # OR git signatures on top commit
 # @DESCRIPTION:
 # verify-all-sigs eclass provides:
+#
 #  - A streamlined approach to verifying
 # upstream signatures on distfiles.  Its primary purpose is to permit
 # developers to easily verify signatures while bumping packages.
