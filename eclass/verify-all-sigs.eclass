@@ -89,14 +89,14 @@ BDEPEND="
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_PATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Path to key bundle used to perform the verification.  This is required
+# Path to key bundle used to perform the release verification.  This is required
 # when using default src_unpack.  Alternatively, the key path can be
 # passed directly to the verification functions.
 
 # @ECLASS-VARIABLE: VERIFY_GIT_SIG_OPENPGP_KEY_PATH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Path to key bundle used to perform the verification.  This is required
+# Path to key bundle used to perform the commit verification.  This is required
 # when using default src_unpack.  Alternatively, the key path can be
 # passed directly to the verification functions.
 
