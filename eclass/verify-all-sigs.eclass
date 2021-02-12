@@ -103,14 +103,14 @@ BDEPEND="
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEYSERVER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Keyserver used to refresh keys.  If not specified, the keyserver
+# Keyserver used to refresh keys (for release keys).  If not specified, the keyserver
 # preference from the key will be respected.  If no preference
 # is specified by the key, the GnuPG default will be used.
 
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_REFRESH
 # @USER_VARIABLE
 # @DESCRIPTION:
-# Attempt to refresh keys via WKD/keyserver.  Set it to "yes"
+# Attempt to refresh keys via WKD/keyserver (for release keys).  Set it to "yes"
 # in make.conf to enable.  Note that this requires working Internet
 # connection.
 : ${VERIFY_SIG_OPENPGP_KEY_REFRESH:=no}
