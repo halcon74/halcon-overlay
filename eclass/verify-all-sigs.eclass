@@ -271,7 +271,7 @@ verify-all-sigs_verify-commit() {
 # Default src_unpack override that verifies signatures for all
 # distfiles if 'verify-sig' flag is enabled __OR__ verifies git commits signatures 
 # on top commit.  The function dies if any
-# of the signatures fails to verify or if any distfiles are not signed.
+# of the signatures fails to verify or if any commits/distfiles are not signed.
 # Please write src_unpack() yourself if you need to perform partial
 # verification.
 verify-all-sigs_src_unpack() {
