@@ -255,7 +255,6 @@ verify-all-sigs_verify_signed_checksums() {
 verify-all-sigs_verify-commit() {
 	local git_dir=${1}
 	local key=${2:-${VERIFY_GIT_SIG_OPENPGP_KEY_PATH}}
-	elog "git_dir = ${git_dir}, key = ${key}, 1 = ${1}"
 
 	[[ -n ${key} ]] ||
 		die "${FUNCNAME}: no key passed and VERIFY_GIT_SIG_OPENPGP_KEY_PATH unset"
