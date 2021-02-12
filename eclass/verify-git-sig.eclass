@@ -18,6 +18,7 @@
 # Example use:
 # @CODE
 # inherit verify-git-sig
+#
 # EGIT_REPO_URI="https://example.org/author/repository.git"
 # EGIT_BRANCH="some-non-default-branch"
 # BDEPEND="
