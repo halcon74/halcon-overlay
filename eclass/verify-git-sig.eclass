@@ -29,8 +29,8 @@
 # @CODE
 # This will use the default git-r3_src_unpack to get the repo and
 # verify the signature on the top commit.
-# Alternatively, use verify-git-sig_verify-commit [<git-directory>] [<key-file>]
-# specifying the directory where to verify the commit and/or the key to verify against.
+# Alternatively, use verify-git-sig_verify-commit <git-directory> [<key-file>]
+# specifying the directory where to verify the commit and, optionally, the key to verify against.
 
 if [[ ! ${_GIT_VERIFY_SIG_ECLASS} ]]; then
 
@@ -77,13 +77,12 @@ verify-git-sig_src_unpack() {
 }
 
 # @FUNCTION: verify-git-sig_verify-commit
-# @USAGE: [<git-directory>] [<key-file>]
+# @USAGE: <git-directory> [<key-file>]
 # @DESCRIPTION:
 # Verifies the newest (HEAD) commit in the supplied directory
 # using the supplied key file
 verify-git-sig_verify-commit() {
-	local -x GIT_DIR
-	local git_dir=${1:-${GIT_DIR}}
+	local git_dir=${1}
 	local key=${2:-${VERIFY_GIT_SIG_OPENPGP_KEY_PATH}}
 
 	[[ -n ${key} ]] ||
