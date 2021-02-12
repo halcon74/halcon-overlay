@@ -6,7 +6,7 @@
 # Alexey Mishustin <halcon@tuta.io>
 # @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass to verify upstream signatures on distfiles 
-# AND git signatures on top commit
+# OR git signatures on top commit
 # @DESCRIPTION:
 # verify-all-sigs eclass provides:
 #  - A streamlined approach to verifying
