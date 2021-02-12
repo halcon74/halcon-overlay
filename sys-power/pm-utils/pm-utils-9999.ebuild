@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils git-verify-signature
+inherit autotools eutils git-verify-sig
 
 DESCRIPTION="Suspend and hibernation utilities"
 HOMEPAGE="https://pm-utils.freedesktop.org/"
@@ -75,8 +75,8 @@ src_install() {
 	rm -rf "${ED}"/etc/video-quirks
 
 	# Remove hooks which are not stable enough yet (rm -f from debian/rules)
-	rm -f "${ED}"/usr/$(get_libdir)/${PN}/power.d/harddrive
+	rm -f "${ED}"/usr/$(get_libdir)/${PN}/power.d/harddrive || die "removing unstable hook 'hardrive' failed"
 
 	# Change to executable (chmod +x from debian/rules)
-	fperms +x /usr/$(get_libdir)/${PN}/defaults
+	fperms +x /usr/$(get_libdir)/${PN}/defaults || die "changing to executable failed"
 }
