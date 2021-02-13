@@ -335,7 +335,7 @@ verify-all-sigs_src_unpack() {
 	fi
 
 	# finally, unpack the distfiles
-	default_src_unpack
+	git-r3_src_unpack
 }
 
 _VERIFY_ALL_SIGS_ECLASS=1
