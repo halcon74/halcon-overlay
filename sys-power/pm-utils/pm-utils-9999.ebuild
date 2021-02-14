@@ -18,6 +18,7 @@ IUSE="debug +logrotate video_cards_intel video_cards_radeon"
 RESTRICT="mirror"
 
 VERIFY_GIT_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/halcon.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/halcon.asc"
 
 vbetool="!video_cards_intel? ( sys-apps/vbetool )"
 RDEPEND="
@@ -33,7 +34,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	>=app-crypt/openpgp-keys-pm-utils-20210206
+	verify-sig? ( >=app-crypt/openpgp-keys-pm-utils-20210206 )
+	verify-git-sig? ( >=app-crypt/openpgp-keys-pm-utils-20210206 )
 "
 
 DOCS="AUTHORS ChangeLog NEWS pm/HOWTO* README* TODO"

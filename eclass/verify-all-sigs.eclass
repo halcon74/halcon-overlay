@@ -6,7 +6,7 @@
 # Alexey Mishustin <halcon@tuta.io>
 # @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass to verify upstream signatures on distfiles 
-# OR git signatures on top commit
+# AND/OR git signatures on top commit
 # @DESCRIPTION:
 # verify-all-sigs eclass provides:
 #
@@ -33,7 +33,7 @@
 # Example use:
 # @CODE
 #
-# For release signatures: 
+# Option 1. For release signatures only (not 9999 ebuilds): 
 #
 # inherit verify-all-sigs
 #
@@ -44,7 +44,7 @@
 #
 # VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example.asc
 #
-# For commit signatures:
+# Option 2. For commit signatures only (9999 ebuilds):
 #
 # inherit verify-all-sigs
 #
@@ -54,6 +54,19 @@
 #   verify-git-sig? ( app-crypt/openpgp-keys-example )"
 #
 # VERIFY_GIT_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example.asc
+#
+# Option 3. For both commit and release signatures (9999 ebuilds):
+#
+# inherit verify-all-sigs
+#
+# EGIT_REPO_URI="https://example.org/author/repository.git"
+# EGIT_BRANCH="some-non-default-branch"
+# BDEPEND="
+#   verify-git-sig? ( app-crypt/openpgp-keys-example1 )"
+#   verify-sig? ( app-crypt/openpgp-keys-example2 )"
+#
+# VERIFY_GIT_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example1.asc
+# VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example2.asc
 #
 # @CODE
 
@@ -68,24 +81,32 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup
 EXPORT_FUNCTIONS src_unpack
 
 if [[ ! ${_VERIFY_ALL_SIGS_ECLASS} ]]; then
 
-inherit git-r3
-
-IUSE="verify-sig verify-git-sig"
-
-BDEPEND="
-	verify-sig? (
-		app-crypt/gnupg
-		>=app-portage/gemato-16
-	)
-	verify-git-sig? (
-		app-crypt/gnupg
-		>=app-portage/gemato-16
-	)"
+if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
+	IUSE="verify-sig verify-git-sig"
+	BDEPEND="
+		verify-sig? (
+			app-crypt/gnupg
+			>=app-portage/gemato-16
+		)
+		verify-git-sig? (
+			app-crypt/gnupg
+			>=app-portage/gemato-16
+		)
+	"
+else
+	IUSE="verify-sig"
+	BDEPEND="
+		verify-sig? (
+			app-crypt/gnupg
+			>=app-portage/gemato-16
+		)
+	"
+fi
 
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_PATH
 # @DEFAULT_UNSET
@@ -104,26 +125,17 @@ BDEPEND="
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEYSERVER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Keyserver used to refresh keys (for release keys).  If not specified, the keyserver
+# Keyserver used to refresh keys (so far only for release keys).  If not specified, the keyserver
 # preference from the key will be respected.  If no preference
 # is specified by the key, the GnuPG default will be used.
 
 # @ECLASS-VARIABLE: VERIFY_SIG_OPENPGP_KEY_REFRESH
 # @USER_VARIABLE
 # @DESCRIPTION:
-# Attempt to refresh keys via WKD/keyserver (for release keys).  Set it to "yes"
+# Attempt to refresh keys via WKD/keyserver (so far only for release keys).  Set it to "yes"
 # in make.conf to enable.  Note that this requires working Internet
 # connection.
 : ${VERIFY_SIG_OPENPGP_KEY_REFRESH:=no}
-
-# @FUNCTION: verify-all-sigs_pkg_setup
-# @DESCRIPTION:
-# Default pkg_setup override for handling mutually exclusive (so far) USE flags.
-verify-all-sigs_pkg_setup() {
-	if use verify-sig && use verify-git-sig; then
-		die "The functionality of verifying both signatures - release and commit - at the same time has not yet been tested"
-	fi
-}
 
 # @FUNCTION: verify-all-sigs_verify_detached
 # @USAGE: <file> <sig-file> [<key-file>]
@@ -270,18 +282,35 @@ verify-all-sigs_verify-commit() {
 # @FUNCTION: verify-all-sigs_src_unpack
 # @DESCRIPTION:
 # Default src_unpack override that verifies signatures for all
-# distfiles if 'verify-sig' flag is enabled __OR__ verifies git commits signatures 
+# distfiles if 'verify-sig' flag is enabled __OR__ verifies git signature
 # on top commit.  The function dies if any
-# of the signatures fails to verify or if any commits/distfiles are not signed.
+# of the signatures fails to verify or if a distfile or top commit is not signed.
 # Please write src_unpack() yourself if you need to perform partial
 # verification.
 verify-all-sigs_src_unpack() {
+	if has "verify-git-sig" ${IUSE} ; then
+		git-r3_src_unpack
+		if use verify-git-sig ; then
+			verify-all-sigs_verify-commit "${EGIT_CHECKOUT_DIR:-${WORKDIR}/${P}}"
+		fi
+	fi
 	if use verify-sig; then
 		local f suffix found
 		local distfiles=() signatures=() nosigfound=() straysigs=()
+		local files=()
+		if has "verify-git-sig" ${IUSE} ; then
+			local file
+			while IFS= read -r -d '' file; do
+				files+=(  "${file}" )
+			done < <(find ${S} -not -path "${S}/.git/*" -not -path "${S}/.gitignore" -type f -print0)
+		else
+			for f in ${A}; do
+				files+=(  "${DISTDIR}/${file}" )
+			done
+		fi
 
 		# find all distfiles and signatures, and combine them
-		for f in ${A}; do
+		for f in ${files[@]}; do
 			found=
 			for suffix in .asc .sig; do
 				if [[ ${f} == *${suffix} ]]; then
@@ -289,7 +318,7 @@ verify-all-sigs_src_unpack() {
 					found=sig
 					break
 				else
-					if has "${f}${suffix}" ${A}; then
+					if has "${f}${suffix}" ${files[@]}; then
 						distfiles+=( "${f}" )
 						found=dist+sig
 						break
@@ -301,7 +330,7 @@ verify-all-sigs_src_unpack() {
 			fi
 		done
 
-		# check if all distfiles are signed
+		check if all distfiles are signed
 		if [[ ${#nosigfound[@]} -gt 0 ]]; then
 			eerror "The following distfiles lack detached signatures:"
 			for f in "${nosigfound[@]}"; do
@@ -327,15 +356,12 @@ verify-all-sigs_src_unpack() {
 		# now perform the verification
 		for f in "${signatures[@]}"; do
 			verify-all-sigs_verify_detached \
-				"${DISTDIR}/${f%.*}" "${DISTDIR}/${f}"
+				"${f%.*}" "${f}"
 		done
-	elif use verify-git-sig; then
-		git-r3_src_unpack
-		verify-all-sigs_verify-commit "${EGIT_CHECKOUT_DIR:-${WORKDIR}/${P}}"
+		if ! has "verify-git-sig" ${IUSE}; then
+			default_src_unpack
+		fi
 	fi
-
-	# finally, unpack the distfiles
-	git-r3_src_unpack
 }
 
 _VERIFY_ALL_SIGS_ECLASS=1
