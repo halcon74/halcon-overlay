@@ -301,11 +301,11 @@ verify-all-sigs_src_unpack() {
 		if has "verify-git-sig" ${IUSE} ; then
 			local file
 			while IFS= read -r -d '' file; do
-				files+=(  "${file}" )
-			done < <(find ${S} -not -path "${S}/.git/*" -not -path "${S}/.gitignore" -type f -print0)
+				files+=( "${file}" )
+			done < <(find "${S}" -not -path "${S}/.git/*" -not -path "${S}/.gitignore" -type f -print0)
 		else
 			for f in ${A}; do
-				files+=(  "${DISTDIR}/${file}" )
+				files+=( "${DISTDIR}/${file}" )
 			done
 		fi
 
