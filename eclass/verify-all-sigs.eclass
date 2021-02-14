@@ -331,13 +331,13 @@ verify-all-sigs_src_unpack() {
 		done
 
 		# check if all distfiles are signed
-		if [[ ${#nosigfound[@]} -gt 0 ]]; then
-			eerror "The following distfiles lack detached signatures:"
-			for f in "${nosigfound[@]}"; do
-				eerror "  ${f}"
-			done
-			die "Unsigned distfiles found"
-		fi
+		# if [[ ${#nosigfound[@]} -gt 0 ]]; then
+		# 	eerror "The following distfiles lack detached signatures:"
+		# 	for f in "${nosigfound[@]}"; do
+		# 		eerror "  ${f}"
+		# 	done
+		# 	die "Unsigned distfiles found"
+		# fi
 
 		# check if there are no stray signatures
 		for f in "${signatures[@]}"; do
@@ -358,6 +358,7 @@ verify-all-sigs_src_unpack() {
 			verify-all-sigs_verify_detached \
 				"${f%.*}" "${f}"
 		done
+
 		if ! has "verify-git-sig" ${IUSE}; then
 			default_src_unpack
 		fi
