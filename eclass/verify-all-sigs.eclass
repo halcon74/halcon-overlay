@@ -330,7 +330,7 @@ verify-all-sigs_src_unpack() {
 			fi
 		done
 
-		check if all distfiles are signed
+		# check if all distfiles are signed
 		if [[ ${#nosigfound[@]} -gt 0 ]]; then
 			eerror "The following distfiles lack detached signatures:"
 			for f in "${nosigfound[@]}"; do
