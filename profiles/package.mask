@@ -7,8 +7,3 @@
 # This ebuild is not yet ready.
 # If it is actual for you, please unmask it in your /etc/portage directory.
 =media-gfx/xnviewmp-bin-0.96.5
-
-# Alexey Mishustin <halcon@tuta.io> (2021-02-15)
-# This ebuild is not yet ready.
-# If it is actual for you, please unmask it in your /etc/portage directory.
-=www-apps/cgit-1.2.3-r100

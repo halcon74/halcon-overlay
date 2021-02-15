@@ -7,7 +7,18 @@ LUA_COMPAT=( lua5-{1..2} luajit )
 
 inherit lua-single toolchain-funcs
 
-[[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
+declare -A MY_DIRS
+MY_DIRS[APPDIR]="/usr/share/webapps/${PN}/${PVR}"
+MY_DIRS[HOSTROOTDIR]="${MY_DIRS[APPDIR]}/hostroot"
+MY_DIRS[CGIBINDIR]="${MY_DIRS[HOSTROOTDIR]}/cgi-bin"
+MY_DIRS[ERRORSDIR]="${MY_DIRS[HOSTROOTDIR]}/error"
+MY_DIRS[ICONSDIR]="${MY_DIRS[HOSTROOTDIR]}/icons"
+MY_DIRS[SERVERCONFIGDIR]="${MY_DIRS[APPDIR]}/conf"
+MY_DIRS[HOOKSCRIPTSDIR]="${MY_DIRS[APPDIR]}/hooks"
+MY_DIRS[HTDOCSDIR]="${MY_DIRS[APPDIR]}/htdocs"
+MY_DIRS[SQLSCRIPTSDIR]="${MY_DIRS[APPDIR]}/sqlscripts"
+MY_DIRS[CGIT_CACHEDIR]="/var/cache/${PN}"
+MY_DIRS[PERSISTROOT]="/var/db/webapps/${PN}/${PVR}"
 
 GIT_V="2.25.1"
 
@@ -22,15 +33,6 @@ KEYWORDS="amd64 arm x86"
 IUSE="doc +highlight libressl +lua test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
-
-MY_HOSTROOTDIR="/usr/share/webapps/${PN}/${PVR}/hostroot"
-MY_CGIBINDIR="${MY_HOSTROOTDIR}/cgi-bin"
-MY_ERRORSDIR="${MY_HOSTROOTDIR}/error"
-MY_ICONSDIR="${MY_HOSTROOTDIR}/icons"
-MY_SERVERCONFIGDIR="/usr/share/webapps/${PN}/${PVR}/conf"
-MY_HOOKSCRIPTSDIR="/usr/share/webapps/${PN}/${PVR}/hooks"
-MY_HTDOCSDIR="/usr/share/webapps/${PN}/${PVR}/htdocs"
-MY_SQLSCRIPTSDIR="/usr/share/webapps/${PN}/${PVR}/sqlscripts"
 
 RDEPEND="
 	acct-group/cgit
@@ -59,9 +61,9 @@ src_prepare() {
 
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
-	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf
-	echo "CGIT_DATA_PATH = ${MY_HTDOCSDIR}" >> cgit.conf
-	echo "CACHE_ROOT = ${CGIT_CACHEDIR}" >> cgit.conf
+	echo "CGIT_SCRIPT_PATH = ${MY_DIRS[CGIBINDIR]}" >> cgit.conf
+	echo "CGIT_DATA_PATH = ${MY_DIRS[HTDOCSDIR]}" >> cgit.conf
+	echo "CACHE_ROOT = ${MY_DIRS[CGIT_CACHEDIR]}" >> cgit.conf
 	echo "DESTDIR = ${D}" >> cgit.conf
 	if use lua; then
 		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf
@@ -78,14 +80,10 @@ src_compile() {
 }
 
 src_preinst() {
-	dodir "${MY_HOSTROOTDIR}"
-	dodir "${MY_CGIBINDIR}"
-	dodir "${MY_ERRORSDIR}"
-	dodir "${MY_ICONSDIR}"
-	dodir "${MY_SERVERCONFIGDIR}"
-	dodir "${MY_HOOKSCRIPTSDIR}"
-	dodir "${MY_HTDOCSDIR}"
-	dodir "${MY_SQLSCRIPTSDIR}"
+	local MY_DIR
+	for MY_DIR in "${!MY_DIRS[@]}"; do
+		dodir "${MY_DIRS[$MY_DIR]}" || die "Failed to create directory "${MY_DIRS[$MY_DIR]}""
+	done
 }
 
 src_install() {
@@ -97,9 +95,15 @@ src_install() {
 	dodoc README
 	use doc && doman cgitrc.5
 
-	keepdir "${CGIT_CACHEDIR}"
-	fowners ${PN}:${PN} "${CGIT_CACHEDIR}"
-	fperms 700 "${CGIT_CACHEDIR}"
+	insinto "${MY_DIRS[APPDIR]}"
+	doins "${FILESDIR}"/postinstall-en.txt
+
+	local MY_DIR
+	for MY_DIR in "${!MY_DIRS[@]}"; do
+		keepdir "${MY_DIRS[$MY_DIR]}" || die "Failed to keep directory "${MY_DIRS[$MY_DIR]}""
+		fowners ${PN}:${PN} "${MY_DIRS[$MY_DIR]}" || die "Failed to change owners for directory "${MY_DIRS[$MY_DIR]}""
+		fperms 700 "${MY_DIRS[$MY_DIR]}" || die "Failed to change permissions for directory "${MY_DIRS[$MY_DIR]}""
+	done
 }
 
 src_test() {
@@ -108,5 +112,5 @@ src_test() {
 
 pkg_postinst() {
 	ewarn "If you intend to run cgit using web server's user"
-	ewarn "you should change ${CGIT_CACHEDIR} permissions."
+	ewarn "you should change ${MY_DIRS[CGIT_CACHEDIR]} permissions."
 }
