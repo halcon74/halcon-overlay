@@ -81,7 +81,7 @@ src_compile() {
 src_preinst() {
 	local MY_DIR
 	for MY_DIR in "${!MY_DIRS[@]}"; do
-		dodir "${MY_DIRS[$MY_DIR]}" || die "Failed to create directory ${MY_DIRS[$MY_DIR]}"
+		dodir "${MY_DIRS[$MY_DIR]}"
 	done
 }
 
@@ -99,9 +99,9 @@ src_install() {
 
 	local MY_DIR
 	for MY_DIR in "${!MY_DIRS[@]}"; do
-		keepdir "${MY_DIRS[$MY_DIR]}" || die "Failed to keep directory ${MY_DIRS[$MY_DIR]}"
-		fowners ${PN}:${PN} "${MY_DIRS[$MY_DIR]}" || die "Failed to change owners for directory ${MY_DIRS[$MY_DIR]}"
-		fperms 700 "${MY_DIRS[$MY_DIR]}" || die "Failed to change permissions for directory ${MY_DIRS[$MY_DIR]}"
+		keepdir "${MY_DIRS[$MY_DIR]}"
+		fowners ${PN}:${PN} "${MY_DIRS[$MY_DIR]}"
+		fperms 700 "${MY_DIRS[$MY_DIR]}"
 	done
 }
 
