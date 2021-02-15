@@ -23,6 +23,15 @@ IUSE="doc +highlight libressl +lua test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
+MY_HOSTROOTDIR="/usr/share/webapps/${PN}/${PVR}/hostroot"
+MY_CGIBINDIR="${MY_HOSTROOTDIR}/cgi-bin"
+MY_ERRORSDIR="${MY_HOSTROOTDIR}/error"
+MY_ICONSDIR="${MY_HOSTROOTDIR}/icons"
+MY_SERVERCONFIGDIR="/usr/share/webapps/${PN}/${PVR}/conf"
+MY_HOOKSCRIPTSDIR="/usr/share/webapps/${PN}/${PVR}/hooks"
+MY_HTDOCSDIR="/usr/share/webapps/${PN}/${PVR}/htdocs"
+MY_SQLSCRIPTSDIR="/usr/share/webapps/${PN}/${PVR}/sqlscripts"
+
 RDEPEND="
 	acct-group/cgit
 	acct-user/cgit
@@ -66,6 +75,17 @@ src_prepare() {
 src_compile() {
 	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 	use doc && emake V=1 doc-man
+}
+
+src_preinst() {
+	dodir "${MY_HOSTROOTDIR}"
+	dodir "${MY_CGIBINDIR}"
+	dodir "${MY_ERRORSDIR}"
+	dodir "${MY_ICONSDIR}"
+	dodir "${MY_SERVERCONFIGDIR}"
+	dodir "${MY_HOOKSCRIPTSDIR}"
+	dodir "${MY_HTDOCSDIR}"
+	dodir "${MY_SQLSCRIPTSDIR}"
 }
 
 src_install() {
