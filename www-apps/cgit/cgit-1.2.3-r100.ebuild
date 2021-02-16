@@ -11,14 +11,9 @@ declare -A MY_DIRS
 MY_DIRS[APPDIR]="/usr/share/webapps/${PN}/${PVR}"
 MY_DIRS[HOSTROOTDIR]="${MY_DIRS[APPDIR]}/hostroot"
 MY_DIRS[CGIBINDIR]="${MY_DIRS[HOSTROOTDIR]}/cgi-bin"
-MY_DIRS[ERRORSDIR]="${MY_DIRS[HOSTROOTDIR]}/error"
-MY_DIRS[ICONSDIR]="${MY_DIRS[HOSTROOTDIR]}/icons"
-MY_DIRS[SERVERCONFIGDIR]="${MY_DIRS[APPDIR]}/conf"
 MY_DIRS[HOOKSCRIPTSDIR]="${MY_DIRS[APPDIR]}/hooks"
 MY_DIRS[HTDOCSDIR]="${MY_DIRS[APPDIR]}/htdocs"
-MY_DIRS[SQLSCRIPTSDIR]="${MY_DIRS[APPDIR]}/sqlscripts"
 MY_DIRS[CGIT_CACHEDIR]="/var/cache/${PN}"
-MY_DIRS[PERSISTROOT]="/var/db/webapps/${PN}/${PVR}"
 
 GIT_V="2.25.1"
 
@@ -30,7 +25,7 @@ SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="doc +highlight +lua test"
+IUSE="doc +highlight +lua nginx test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -70,6 +65,9 @@ src_prepare() {
 		echo "NO_LUA = 1" >> cgit.conf
 	fi
 
+	epatch \
+		"${FILESDIR}"/${PV}-processing-page.patch
+
 	eapply_user
 }
 
@@ -94,13 +92,14 @@ src_install() {
 	dodoc README
 	use doc && doman cgitrc.5
 
-	insinto "${MY_DIRS[APPDIR]}"
-	doins "${FILESDIR}"/postinstall-en.txt
-
 	local MY_DIR
 	for MY_DIR in "${!MY_DIRS[@]}"; do
 		keepdir "${MY_DIRS[$MY_DIR]}"
-		fowners ${PN}:${PN} "${MY_DIRS[$MY_DIR]}"
+		if use nginx; then
+			fowners nginx:nginx "${MY_DIRS[$MY_DIR]}"
+		else
+			fowners ${PN}:${PN} "${MY_DIRS[$MY_DIR]}"
+		fi
 		fperms 700 "${MY_DIRS[$MY_DIR]}"
 	done
 }
@@ -110,6 +109,8 @@ src_test() {
 }
 
 pkg_postinst() {
-	ewarn "If you intend to run cgit using web server's user"
-	ewarn "you should change ${MY_DIRS[CGIT_CACHEDIR]} permissions."
+	local MY_LINE
+	while IFS= read -r -d '' MY_LINE; do
+		ewarn "${MY_LINE}"
+	done < <(cat "${FILESDIR}"/postinstall-en.txt)
 }
