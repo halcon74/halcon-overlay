@@ -2,4 +2,4 @@ media-gfx/xnviewmp-bin:bundled-qt-libs - Use Qt libraries shipped with the packa
 media-gfx/xnviewmp-bin:bundled-icu-libs - Use icu libraries shipped with the package (introduced in halcon-overlay)
 media-gfx/xnviewmp-bin:bundled-other-libs - Use other (than Qt and icu) libraries shipped with the package (introduced in halcon-overlay)
 media-gfx/xnviewmp-bin:system-pulseaudio - Use standard pulseadio libraries provided by the system (introduced in halcon-overlay)
-www-apps/cgit:nginx - Change owners of the application directories to nginx::nginx
+www-apps/cgit:nginx - Change owners of the application directories to nginx:nginx
