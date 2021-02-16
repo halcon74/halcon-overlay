@@ -110,7 +110,7 @@ src_test() {
 
 pkg_postinst() {
 	local MY_LINE
-	while IFS= read -r -d '' MY_LINE; do
+	while IFS= read -r -MY_LINE; do
 		ewarn "${MY_LINE}"
 	done < <(cat "${FILESDIR}"/postinstall-en.txt)
 }
