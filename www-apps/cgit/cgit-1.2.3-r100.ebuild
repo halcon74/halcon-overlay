@@ -7,13 +7,16 @@ LUA_COMPAT=( lua5-{1..2} luajit )
 
 inherit lua-single toolchain-funcs
 
+MY_APPDIR="/usr/share/webapps/${PN}/${PVR}"
+MY_HOSTROOTDIR="${MY_APPDIR}/hostroot"
+
 declare -A MY_DIRS
-MY_DIRS[APPDIR]="/usr/share/webapps/${PN}/${PVR}"
-MY_DIRS[HOSTROOTDIR]="${MY_DIRS[APPDIR]}/hostroot"
-MY_DIRS[CGIBINDIR]="${MY_DIRS[HOSTROOTDIR]}/cgi-bin"
-MY_DIRS[HOOKSCRIPTSDIR]="${MY_DIRS[APPDIR]}/hooks"
-MY_DIRS[HTDOCSDIR]="${MY_DIRS[APPDIR]}/htdocs"
-MY_DIRS[CGIT_CACHEDIR]="/var/cache/${PN}"
+MY_DIRS[CGIBINDIR]="${MY_HOSTROOTDIR}/cgi-bin"
+MY_DIRS[HTDOCSDIR]="${MY_APPDIR}/htdocs"
+
+declare -A MY_EMPTY_DIRS
+MY_EMPTY_DIRS[HOOKSCRIPTSDIR]="${MY_APPDIR}/hooks"
+MY_EMPTY_DIRS[CGIT_CACHEDIR]="/var/cache/${PN}"
 
 GIT_V="2.25.1"
 
@@ -57,7 +60,7 @@ src_prepare() {
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
 	echo "CGIT_SCRIPT_PATH = ${MY_DIRS[CGIBINDIR]}" >> cgit.conf
 	echo "CGIT_DATA_PATH = ${MY_DIRS[HTDOCSDIR]}" >> cgit.conf
-	echo "CACHE_ROOT = ${MY_DIRS[CGIT_CACHEDIR]}" >> cgit.conf
+	echo "CACHE_ROOT = ${MY_EMPTY_DIRS[CGIT_CACHEDIR]}" >> cgit.conf
 	echo "DESTDIR = ${D}" >> cgit.conf
 	if use lua; then
 		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf
@@ -77,9 +80,13 @@ src_compile() {
 }
 
 src_preinst() {
-	local MY_DIR
+	local MY_DIR MY_EMPTY_DIR
+
 	for MY_DIR in "${!MY_DIRS[@]}"; do
 		dodir "${MY_DIRS[$MY_DIR]}"
+	done
+	for MY_EMPTY_DIR in "${!MY_EMPTY_DIRS[@]}"; do
+		keepdir "${MY_DIRS[$MY_DIR]}"
 	done
 }
 
@@ -92,15 +99,14 @@ src_install() {
 	dodoc README
 	use doc && doman cgitrc.5
 
-	local MY_DIR
-	for MY_DIR in "${!MY_DIRS[@]}"; do
-		keepdir "${MY_DIRS[$MY_DIR]}"
+	local MY_ANY_DIR
+	for MY_ANY_DIR in "${!MY_DIRS[@]}" "${!MY_EMPTY_DIRS[@]}"; do
 		if use nginx; then
-			fowners nginx:nginx "${MY_DIRS[$MY_DIR]}"
+			fowners nginx:nginx "${MY_DIRS[$MY_ANY_DIR]}"
 		else
-			fowners ${PN}:${PN} "${MY_DIRS[$MY_DIR]}"
+			fowners ${PN}:${PN} "${MY_DIRS[$MY_ANY_DIR]}"
 		fi
-		fperms 700 "${MY_DIRS[$MY_DIR]}"
+		fperms 700 "${MY_DIRS[$MY_ANY_DIR]}"
 	done
 }
 
@@ -113,4 +119,8 @@ pkg_postinst() {
 	while IFS= read -r MY_LINE; do
 		ewarn "${MY_LINE}"
 	done < <(cat "${FILESDIR}"/postinstall-en.txt)
+}
+
+pkg_postrm() {
+	rm -rf "${EROOT}${MY_EMPTY_DIRS[CGIT_CACHEDIR]}" || die
 }
