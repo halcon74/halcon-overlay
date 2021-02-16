@@ -78,18 +78,17 @@ src_compile() {
 	use doc && emake V=1 doc-man
 }
 
-src_preinst() {
+src_install() {
 	local MY_DIR MY_EMPTY_DIR
-
 	for MY_DIR in "${!MY_DIRS[@]}"; do
+		elog "dodir ${MY_DIRS[$MY_DIR]}"
 		dodir "${MY_DIRS[$MY_DIR]}"
 	done
 	for MY_EMPTY_DIR in "${!MY_EMPTY_DIRS[@]}"; do
-		keepdir "${MY_DIRS[$MY_DIR]}"
+		keepdir "${MY_EMPTY_DIRS[$MY_EMPTY_DIR]}"
+		elog "keepdir ${MY_EMPTY_DIRS[$MY_EMPTY_DIR]}"
 	done
-}
 
-src_install() {
 	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" install
 
 	insinto /etc
@@ -98,15 +97,23 @@ src_install() {
 	dodoc README
 	use doc && doman cgitrc.5
 
-	local MY_ANY_DIRS
-	MY_ANY_DIRS=("${!MY_DIRS[@]}" "${!MY_EMPTY_DIRS[@]}")
-	for MY_ANY_DIR in "${!MY_ANY_DIRS[@]}"; do
+	local MY_ALL_DIRS=()
+	local MY_DIR_KEY MY_EMPTY_DIR_KEY
+	for MY_DIR_KEY in "${!MY_DIRS[@]}"; do
+		MY_ALL_DIRS+=( "${MY_DIRS[$MY_DIR_KEY]}" )
+	done
+	for MY_EMPTY_DIR_KEY in "${!MY_EMPTY_DIRS[@]}"; do
+		MY_ALL_DIRS+=( "${MY_EMPTY_DIRS[$MY_EMPTY_DIR_KEY]}" )
+	done
+
+	local MY_EACH_DIR
+	for MY_EACH_DIR in "${MY_ALL_DIRS[@]}"; do
 		if use nginx; then
-			fowners nginx:nginx "${MY_DIRS[$MY_ANY_DIR]}"
+			fowners nginx:nginx "${MY_EACH_DIR}"
 		else
-			fowners ${PN}:${PN} "${MY_DIRS[$MY_ANY_DIR]}"
+			fowners ${PN}:${PN} "${MY_EACH_DIR}"
 		fi
-		fperms 700 "${MY_DIRS[$MY_ANY_DIR]}"
+		fperms 700 "${MY_EACH_DIR}"
 	done
 }
 
