@@ -1,14 +1,14 @@
 Description: Fixing "Error processing page: Invalid argument" - https://lists.zx2c4.com/pipermail/cgit/2020-December/004588.html
 Author: Steffen Nurpmeso steffen at sdaoden.eu
 
---- cgit.mk
-+++ cgit.mk
+--- a/cgit.mk
++++ b/cgit.mk
 @@ -64,7 +64,7 @@
  endif
  
  ifdef HAVE_LINUX_SENDFILE
--       CGIT_CFLAGS += -DHAVE_LINUX_SENDFILE
-+       #CGIT_CFLAGS += -DHAVE_LINUX_SENDFILE
+-	CGIT_CFLAGS += -DHAVE_LINUX_SENDFILE
++	#CGIT_CFLAGS += -DHAVE_LINUX_SENDFILE
  endif
  
  CGIT_OBJ_NAMES += cgit.o
