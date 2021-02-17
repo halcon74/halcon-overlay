@@ -79,14 +79,16 @@ src_compile() {
 }
 
 src_install() {
-	local MY_DIR MY_EMPTY_DIR
-	for MY_DIR in "${!MY_DIRS[@]}"; do
-		elog "dodir ${MY_DIRS[$MY_DIR]}"
-		dodir "${MY_DIRS[$MY_DIR]}"
+	local MY_DIR_KEY MY_EMPTY_DIR_KEY MY_DIR_VALUE MY_EMPTY_DIR_VALUE
+	for MY_DIR_KEY in "${!MY_DIRS[@]}"; do
+		MY_DIR_VALUE="${MY_DIRS[$MY_DIR_KEY]}"
+		elog "dodir ${MY_DIR_VALUE}"
+		dodir "${MY_DIR_VALUE}"
 	done
-	for MY_EMPTY_DIR in "${!MY_EMPTY_DIRS[@]}"; do
-		keepdir "${MY_EMPTY_DIRS[$MY_EMPTY_DIR]}"
-		elog "keepdir ${MY_EMPTY_DIRS[$MY_EMPTY_DIR]}"
+	for MY_EMPTY_DIR_KEY in "${!MY_EMPTY_DIRS[@]}"; do
+		MY_EMPTY_DIR_VALUE="${MY_EMPTY_DIRS[$MY_EMPTY_DIR_KEY]}"
+		keepdir "${MY_EMPTY_DIR_VALUE}"
+		elog "keepdir ${MY_EMPTY_DIR_VALUE}"
 	done
 
 	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" install
