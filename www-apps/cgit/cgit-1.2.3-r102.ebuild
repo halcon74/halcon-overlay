@@ -109,9 +109,9 @@ src_install() {
 	local MY_EACH_DIR
 	for MY_EACH_DIR in "${MY_ALL_DIRS[@]}"; do
 		if use nginx; then
-			fowners nginx:nginx "${MY_EACH_DIR}"
+			fowners -R nginx:nginx "${MY_EACH_DIR}"
 		else
-			fowners "${PN}":"${PN}" "${MY_EACH_DIR}"
+			fowners -R "${PN}":"${PN}" "${MY_EACH_DIR}"
 		fi
 		fperms 700 "${MY_EACH_DIR}"
 	done
