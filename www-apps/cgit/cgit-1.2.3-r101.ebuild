@@ -18,11 +18,11 @@ declare -A MY_EMPTY_DIRS
 MY_EMPTY_DIRS[HOOKSCRIPTSDIR]="${MY_APPDIR}/hooks"
 MY_EMPTY_DIRS[CACHEDIR]="/var/cache/${PN}"
 
-GIT_V="2.25.1"
+MY_GIT_V="2.25.1"
 
 DESCRIPTION="Fast web-interface for git repositories"
 HOMEPAGE="https://git.zx2c4.com/cgit/about"
-SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
+SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${MY_GIT_V}.tar.xz
 	https://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -54,7 +54,7 @@ pkg_setup() {
 
 src_prepare() {
 	rmdir git || die
-	mv "${WORKDIR}"/git-"${GIT_V}" git || die
+	mv "${WORKDIR}"/git-"${MY_GIT_V}" git || die
 
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
@@ -129,5 +129,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	rm -rf "${EROOT}${MY_EMPTY_DIRS[CACHEDIR]}" || die
+	if [[ -z ${REPLACED_BY_VERSION} ]]; then
+		ewarn "rm -rf ${EROOT}${MY_EMPTY_DIRS[CACHEDIR]}"
+		rm -rf "${EROOT}${MY_EMPTY_DIRS[CACHEDIR]}" || die
+	fi
 }
