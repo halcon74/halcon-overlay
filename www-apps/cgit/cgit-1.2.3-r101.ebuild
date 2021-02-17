@@ -68,7 +68,7 @@ src_prepare() {
 		echo "NO_LUA = 1" >> cgit.conf
 	fi
 
-	eapply "${FILESDIR}"/${PV}-processing-page.patch
+	eapply "${FILESDIR}"/"${PV}"-processing-page.patch
 
 	eapply_user
 }
@@ -111,7 +111,7 @@ src_install() {
 		if use nginx; then
 			fowners nginx:nginx "${MY_EACH_DIR}"
 		else
-			fowners ${PN}:${PN} "${MY_EACH_DIR}"
+			fowners "${PN}":"${PN}" "${MY_EACH_DIR}"
 		fi
 		fperms 700 "${MY_EACH_DIR}"
 	done
@@ -129,7 +129,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -z ${REPLACED_BY_VERSION} ]]; then
+	if [[ -z "${REPLACED_BY_VERSION}" ]]; then
 		ewarn "rm -rf ${EROOT}${MY_EMPTY_DIRS[CACHEDIR]}"
 		rm -rf "${EROOT}${MY_EMPTY_DIRS[CACHEDIR]}" || die
 	fi
