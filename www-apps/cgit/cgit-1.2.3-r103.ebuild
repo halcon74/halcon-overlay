@@ -1,6 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# This ebuild is based on the official ebuild in the main ::Gentoo tree
+# and modificated by Alexey Mishustin <halcon@tuta.io>
+
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} luajit )
@@ -56,12 +59,12 @@ src_prepare() {
 	rmdir git || die
 	mv "${WORKDIR}"/git-"${MY_GIT_V}" git || die
 
-	echo "prefix = ${EPREFIX}/usr" >> cgit.conf
-	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
-	echo "CGIT_SCRIPT_PATH = ${MY_DIRS[CGIBINDIR]}" >> cgit.conf
-	echo "CGIT_DATA_PATH = ${MY_DIRS[HTDOCSDIR]}" >> cgit.conf
-	echo "CACHE_ROOT = ${MY_EMPTY_DIRS[CACHEDIR]}" >> cgit.conf
-	echo "DESTDIR = ${D}" >> cgit.conf
+	{ echo "prefix = ${EPREFIX}/usr";
+	echo "libdir = ${EPREFIX}/usr/$(get_libdir)";
+	echo "CGIT_SCRIPT_PATH = ${MY_DIRS[CGIBINDIR]}";
+	echo "CGIT_DATA_PATH = ${MY_DIRS[HTDOCSDIR]}";
+	echo "CACHE_ROOT = ${MY_EMPTY_DIRS[CACHEDIR]}";
+	echo "DESTDIR = ${D}"; } >> cgit.conf
 	if use lua; then
 		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf
 	else
@@ -79,14 +82,12 @@ src_compile() {
 }
 
 src_install() {
-	local MY_DIR_KEY MY_EMPTY_DIR_KEY MY_DIR_VALUE MY_EMPTY_DIR_VALUE
-	for MY_DIR_KEY in "${!MY_DIRS[@]}"; do
-		MY_DIR_VALUE="${MY_DIRS[$MY_DIR_KEY]}"
+	local MY_DIR_VALUE MY_EMPTY_DIR_VALUE
+	for MY_DIR_VALUE in "${MY_DIRS[@]}"; do
 		elog "dodir ${MY_DIR_VALUE}"
 		dodir "${MY_DIR_VALUE}"
 	done
-	for MY_EMPTY_DIR_KEY in "${!MY_EMPTY_DIRS[@]}"; do
-		MY_EMPTY_DIR_VALUE="${MY_EMPTY_DIRS[$MY_EMPTY_DIR_KEY]}"
+	for MY_EMPTY_DIR_VALUE in "${MY_EMPTY_DIRS[@]}"; do
 		keepdir "${MY_EMPTY_DIR_VALUE}"
 		elog "keepdir ${MY_EMPTY_DIR_VALUE}"
 	done
@@ -100,21 +101,21 @@ src_install() {
 	use doc && doman cgitrc.5
 
 	local MY_ALL_DIRS=()
-	local MY_DIR_KEY MY_EMPTY_DIR_KEY
-	for MY_DIR_KEY in "${!MY_DIRS[@]}"; do
-		MY_ALL_DIRS+=( "${MY_DIRS[$MY_DIR_KEY]}" )
+	local MY_DIR_VALUE MY_EMPTY_DIR_VALUE
+	for MY_DIR_VALUE in "${MY_DIRS[@]}"; do
+		MY_ALL_DIRS+=( "${MY_DIR_VALUE}" )
 	done
-	for MY_EMPTY_DIR_KEY in "${!MY_EMPTY_DIRS[@]}"; do
-		MY_ALL_DIRS+=( "${MY_EMPTY_DIRS[$MY_EMPTY_DIR_KEY]}" )
+	for MY_EMPTY_DIR_VALUE in "${MY_EMPTY_DIRS[@]}"; do
+		MY_ALL_DIRS+=( "${MY_EMPTY_DIR_VALUE}" )
 	done
 
-	local MY_EACH_DIR
+	local MY_UID MY_EACH_DIR
+	MY_UID="cgit"
+	if use nginx; then
+		MY_UID="nginx"
+	fi
 	for MY_EACH_DIR in "${MY_ALL_DIRS[@]}"; do
-		if use nginx; then
-			fowners -R nginx:nginx "${MY_EACH_DIR}"
-		else
-			fowners -R "${PN}":"${PN}" "${MY_EACH_DIR}"
-		fi
+		fowners -R "${MY_UID}":"${MY_UID}" "${MY_EACH_DIR}"
 		fperms 700 "${MY_EACH_DIR}"
 	done
 }
