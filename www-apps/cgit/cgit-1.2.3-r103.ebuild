@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # This ebuild is based on the official ebuild in the main ::Gentoo tree
-# and modificated by Alexey Mishustin <halcon@tuta.io>
+# and modified by Alexey Mishustin <halcon@tuta.io>
 
 EAPI=7
 
