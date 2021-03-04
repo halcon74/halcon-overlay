@@ -12,7 +12,9 @@ If you find a bug, please feel free to report it.
 * app-text/evince - Building evince without gvfs and dbus. And it works! [MASKED], as I don't neither use nor maintain this ebuild anymore.
 * dev-perl/JSON - Version bump, relatively to the (obsolete) current 2.940.0 in ::gentoo (03.02.2021). 
 * dev-perl/Config-Identity - Dependency for Minilla. Absent in ::gentoo.  
+* dev-perl/Data-Entropy - Entropy (randomness) management. The package is being installed in minimal configuration (without RandomnumbersInfo and RandomOrg modules). Absent in ::gentoo.  
 * dev-perl/Data-Section-Simple - Dependency for Minilla. Absent in ::gentoo.  
+* dev-perl/Digest-Bcrypt - Perl interface to the bcrypt digest algorithm. Absent in ::gentoo.  
 * dev-perl/Minilla - CPAN module authoring tool, recently suggested. Absent in ::gentoo.  
 * dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
 * dev-perl/String-Format - Fixed Gentoo bug 715140. Version bump, relatively to the (obsolete) current 1.170.0 in ::gentoo (02.02.2021). The bump is important because String-Format-1.170.0 will not work in the next perl version (5.32). All its reverse dependencies, including Perl-Critic, won't work either. (Perl-Critic warns about it.)

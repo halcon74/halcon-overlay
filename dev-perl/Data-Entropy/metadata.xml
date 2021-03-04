@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription lang="en">
+		This module maintains a concept of a current selection of entropy source. Algorithms that require entropy, such as those in Data::Entropy::Algorithms, can use the source nominated by this module, avoiding the need for entropy source objects to be explicitly passed around. This is convenient because usually one entropy source will be used for an entire program run and so an explicit entropy source parameter would rarely vary. There is also a default entropy source, avoiding the need to explicitly configure a source at all.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpan">Data-Entropy</remote-id>
+		<remote-id type="cpan-module">Data::Entropy</remote-id>
+		<remote-id type="cpan-module">Data::Entropy::Algorithms</remote-id>
+		<remote-id type="cpan-module">Data::Entropy::RawSource::CryptCounter</remote-id>
+		<remote-id type="cpan-module">Data::Entropy::RawSource::Local</remote-id>
+		<remote-id type="cpan-module">Data::Entropy::Source</remote-id>
+	</upstream>
+</pkgmetadata>
