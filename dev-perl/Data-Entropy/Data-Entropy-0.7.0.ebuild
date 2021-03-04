@@ -66,10 +66,10 @@ src_prepare() {
 	ORG_PM="lib/Data/Entropy/RawSource/RandomOrg.pm"
 	INFO_PM="lib/Data/Entropy/RawSource/RandomnumbersInfo.pm"
 
-	ORG_JSON_NUM="$(grep -n -- "${ORG_PM}" META.json | head -1 | cut -d: -f1)"
-	ORG_YML_NUM="$(grep -n -- "${ORG_PM}" META.yml | head -1 | cut -d: -f1)"
-	INFO_JSON_NUM="$(grep -n -- "${INFO_PM}" META.json | head -1 | cut -d: -f1)"
-	INFO_YML_NUM="$(grep -n -- "${INFO_PM}" META.yml | head -1 | cut -d: -f1)"
+	ORG_JSON_NUM="$(grep -n -- "${ORG_PM}" META.json | head -1 | cut -d: -f1)" || die
+	ORG_YML_NUM="$(grep -n -- "${ORG_PM}" META.yml | head -1 | cut -d: -f1)" || die
+	INFO_JSON_NUM="$(grep -n -- "${INFO_PM}" META.json | head -1 | cut -d: -f1)" || die
+	INFO_YML_NUM="$(grep -n -- "${INFO_PM}" META.yml | head -1 | cut -d: -f1)" || die
 
 	let "ORG_JSON_FROM=ORG_JSON_NUM-1" || die
 	let "ORG_JSON_TO=ORG_JSON_NUM+2" || die
