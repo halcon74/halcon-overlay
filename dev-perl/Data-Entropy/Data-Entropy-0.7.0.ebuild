@@ -37,8 +37,8 @@ DEPEND="${RDEPEND}
 
 # Modules Data::Entropy::RawSource::RandomOrg and Data::Entropy::RawSource::RandomnumbersInfo
 # are not needed in the minimal configuration.
-# They would require HTTP::Lite and would get random numbers from websites
-# They could be get enabled with IUSE flag 'web' or something
+# They would require HTTP::Lite and would get random numbers from websites.
+# They could be enabled with IUSE flag 'web' or something.
 PERL_RM_FILES=(
 	lib/Data/Entropy/RawSource/RandomOrg.pm
 	lib/Data/Entropy/RawSource/RandomnumbersInfo.pm
@@ -56,7 +56,7 @@ src_prepare() {
 	sed -i -e '/RandomOrg/d' \
 			-e '/RandomnumbersInfo/d' MANIFEST || die
 
-	# ToDo: shorten the following code
+	# ToDo: shorten the following code or move it to an eclass
 	local		ORG_PM			INFO_PM	\
 			ORG_JSON_NUM	ORG_YML_NUM	\
 			INFO_JSON_NUM	INFO_YML_NUM \
