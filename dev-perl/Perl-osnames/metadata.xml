@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription lang="en">
+		This package contains $data which lists possible values of $^O along with description for each. It also provides some helper functions.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpan">Perl-osnames</remote-id>
+		<remote-id type="cpan-module">Perl::osnames</remote-id>
+	</upstream>
+</pkgmetadata>
