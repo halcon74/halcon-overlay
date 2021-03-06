@@ -57,3 +57,7 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Requires
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/release-hooks-at-dist-too.patch"
+)
