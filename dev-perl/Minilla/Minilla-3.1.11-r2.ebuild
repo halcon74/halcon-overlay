@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/tokuhirom/Minilla"
 DIST_EXAMPLES=("eg/*")
 
 SLOT="0"
-IUSE="examples test"
+IUSE="disthook examples test"
 RESTRICT="
 	mirror
 	!test? ( test )
@@ -58,6 +58,9 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/release-hooks-at-dist-too.patch"
-)
+src_prepare() {
+	default
+	if use "disthook"; then
+		eapply "${FILESDIR}/release-hooks-at-dist-too.patch"
+	fi
+}
