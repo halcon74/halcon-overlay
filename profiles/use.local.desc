@@ -1,3 +1,4 @@
+dev-perl/Minilla:disthook - Apply the patch for making release.hooks run not at 'minil release' only, but at 'minil dist' too (introduced in halcon-overlay)
 media-gfx/xnviewmp-bin:bundled-qt-libs - Use Qt libraries shipped with the package (introduced in halcon-overlay)
 media-gfx/xnviewmp-bin:bundled-icu-libs - Use icu libraries shipped with the package (introduced in halcon-overlay)
 media-gfx/xnviewmp-bin:bundled-other-libs - Use other (than Qt and icu) libraries shipped with the package (introduced in halcon-overlay)
