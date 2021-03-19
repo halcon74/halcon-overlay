@@ -6,8 +6,9 @@ If you find a bug, please feel free to report it.
 #### PACKAGES:
 
 * app-crypt/openpgp-keys-pm-utils - Package for testing the functionality of checking git commit signatures in ebuilds. Absent in ::gentoo.  
+* app-crypt/openpgp-keys-worker - Ralf Hoffmann's openPGP key used to sign app-misc/worker releases. Absent in ::gentoo.  
 * app-misc/Hello_World - Test program that I've written for learning purposes. It just prints 'Hello World!' to STDOUT. Absent in ::gentoo.  
-* app-misc/worker - Version bump, relatively to the (obsolete) current 3.8.3 in ::gentoo (20.12.2020). The ebuild is significantly re-made.
+* app-misc/worker - Version bump, relatively to the (obsolete) current 4.6.1 in ::gentoo (20.03.2021). The ebuild is significantly re-made. Verifying release signature is available (with USE flag 'verify-sig').
 * app-portage/g-cpan - So far for testing/learning purposes only.
 * app-text/evince - Building evince without gvfs and dbus. And it works! [MASKED], as I don't neither use nor maintain this ebuild anymore.
 * dev-perl/JSON - Version bump, relatively to the (obsolete) current 2.940.0 in ::gentoo (03.02.2021). 
