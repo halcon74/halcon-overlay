@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils verify-all-sigs
+inherit autotools eutils verify-git-sig
 
 DESCRIPTION="Suspend and hibernation utilities"
 HOMEPAGE="https://pm-utils.freedesktop.org/"
@@ -34,7 +34,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	verify-sig? ( >=app-crypt/openpgp-keys-pm-utils-20210206 )
 	verify-git-sig? ( >=app-crypt/openpgp-keys-pm-utils-20210206 )
 "
 
