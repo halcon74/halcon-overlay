@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="OpenPGP key used to sign pm-utils (Alexey Mishustin's fork) git commits"
-HOMEPAGE="https://github.com/halcon74/openpgp-key/releases/tag/v20210206"
+HOMEPAGE="https://github.com/halcon74/openpgp-key/releases"
 SRC_URI="
 	https://keys.openpgp.org/vks/v1/by-fingerprint/2CBEFA570AEB24A706847485BF15ECF9BFC05F96
 		-> halcon.asc
