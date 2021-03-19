@@ -279,6 +279,26 @@ verify-all-sigs_verify-commit() {
 		die "Git commit verification failed"
 }
 
+# for internal use only (from unpacker.eclass)
+find_unpackable_file() {
+	local src=$1
+	if [[ -z ${src} ]] ; then
+		src=${DISTDIR}/${A}
+	else
+		if [[ ${src} == ./* ]] ; then
+			: # already what we want
+		elif [[ -e ${DISTDIR}/${src} ]] ; then
+			src=${DISTDIR}/${src}
+		elif [[ -e ${PWD}/${src} ]] ; then
+			src=${PWD}/${src}
+		elif [[ -e ${src} ]] ; then
+			src=${src}
+		fi
+	fi
+	[[ ! -e ${src} ]] && return 1
+	echo "${src}"
+}
+
 # @FUNCTION: verify-all-sigs_src_unpack
 # @DESCRIPTION:
 # Default src_unpack override that verifies signatures for all
@@ -305,7 +325,7 @@ verify-all-sigs_src_unpack() {
 			done < <(find "${S}" -not -path "${S}/.git/*" -not -path "${S}/.gitignore" -type f -print0)
 		else
 			for f in ${A}; do
-				files+=( "${DISTDIR}/${file}" )
+				files+=( "${DISTDIR}/${f}" )
 			done
 		fi
 
@@ -331,13 +351,13 @@ verify-all-sigs_src_unpack() {
 		done
 
 		# check if all distfiles are signed
-		# if [[ ${#nosigfound[@]} -gt 0 ]]; then
-		# 	eerror "The following distfiles lack detached signatures:"
-		# 	for f in "${nosigfound[@]}"; do
-		# 		eerror "  ${f}"
-		# 	done
-		# 	die "Unsigned distfiles found"
-		# fi
+		if [[ ${#nosigfound[@]} -gt 0 ]]; then
+			eerror "The following distfiles lack detached signatures:"
+		 	for f in "${nosigfound[@]}"; do
+		 		eerror "  ${f}"
+		 	done
+		 	die "Unsigned distfiles found"
+		fi
 
 		# check if there are no stray signatures
 		for f in "${signatures[@]}"; do
@@ -360,7 +380,45 @@ verify-all-sigs_src_unpack() {
 		done
 
 		if ! has "verify-git-sig" ${IUSE}; then
-			default_src_unpack
+			set -- ${A}
+			for a ; do
+				if [[ ${a} == *.asc || ${a} == *.sig ]]; then
+					continue
+				fi
+				local m=$(echo "${a}" | tr '[:upper:]' '[:lower:]')
+				a=$(find_unpackable_file "${a}")
+
+				# figure out the decompression method
+				local comp=""
+				case ${m} in
+				*.zst)
+					comp="zstd -dfc" ;;
+				esac
+
+				# figure out if there are any archiving aspects
+				local arch=""
+				case ${m} in
+				*.tgz|*.tbz|*.tbz2|*.txz|*.tar.*|*.tar)
+					arch="tar --no-same-owner -xof" ;;
+				esac
+
+				# do the unpack
+				if [[ -z ${arch}${comp} ]] ; then
+					unpack "$1"
+					return $?
+				fi
+				[[ ${arch} != unpack_* ]] && unpack_banner "${a}"
+				if [[ -z ${arch} ]] ; then
+					# Need to decompress the file into $PWD #408801
+					local _a=${a%.*}
+					${comp} "${a}" > "${_a##*/}"
+				elif [[ -z ${comp} ]] ; then
+					${arch} "${a}"
+				else
+					${comp} "${a}" | ${arch} -
+				fi
+				assert "unpacking ${a} failed (comp=${comp} arch=${arch})"
+			done
 		fi
 	fi
 }
