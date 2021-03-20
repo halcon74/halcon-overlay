@@ -78,7 +78,6 @@ BDEPEND="
 : ${VERIFY_SIG_OPENPGP_KEY_REFRESH:=no}
 
 # @ECLASS-VARIABLE: VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # For compatibility with other eclasses (such as unpacker).  Set it to 
 # "no" if unpacking should not be performed imediately after verifying 
