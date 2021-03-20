@@ -12,7 +12,9 @@ SRC_URI="
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 x86"
+
+RESTRICT="mirror"
 
 S=${WORKDIR}
 
