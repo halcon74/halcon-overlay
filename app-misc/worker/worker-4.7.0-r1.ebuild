@@ -12,7 +12,7 @@ HOMEPAGE="http://www.boomerangsworld.de/cms/worker/"
 SRC_URI="mirror://sourceforge/workerfm/${P}.tar.zst
 	verify-sig? ( mirror://sourceforge/workerfm/${P}.tar.zst.asc -> ${P}.tar.zst.sig )"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE="avfs debug dbus examples libnotify lua +magic openssl +verify-sig xinerama +xft"

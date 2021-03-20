@@ -11,7 +11,7 @@ DESCRIPTION="Worker Filemanager: Amiga Directory Opus 4 clone"
 HOMEPAGE="http://www.boomerangsworld.de/cms/worker/"
 SRC_URI="mirror://sourceforge/workerfm/${P}.tar.zst"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE="avfs debug dbus examples libnotify lua +magic openssl xinerama +xft"
