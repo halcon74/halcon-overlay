@@ -80,8 +80,8 @@ BDEPEND="
 # @ECLASS-VARIABLE: VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK
 # @DESCRIPTION:
 # For compatibility with other eclasses (such as unpacker).  Set it to 
-# "no" if unpacking should not be performed imediately after verifying 
-# signatures but later in the ebuild (by unpacker.eclass).
+# "no" if unpacking should be performed not immediately after verifying 
+# signatures but later, according to the ebuild (calling unpacker.eclass).
 : ${VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK:=yes}
 
 # @FUNCTION: verify-sig_verify_detached
