@@ -27,6 +27,7 @@ If you find a bug, please feel free to report it.
 * dev-vcs/hg-git - Version bump, relatively to the current 0.9.0 in ::gentoo (04.02.2021).
 * media-gfx/xnviewmp-bin - Attempt to build XnViewMP with system libraries. So far unsuccessful... [MASKED], as this ebuild is not yet ready. Absent in ::gentoo.  
 * media-libs/avidemux-plugins - Fixed Gentoo bug 744859. Lets to get rid of dev-lang/spidermonkey and of python 2.7.
+* sys-apps/v86d - A daemon to run x86 code in an emulated environment. Identical to the ebuild in sabayon ("for-gentoo") overlay before klibc last-riting in March 2021.
 * sys-libs/klibc - A minimal libc subset for use with initramfs. Dependency for sys-apps/v86d. Almost identical to the standard ebuild in ::gentoo before last-riting in March 2021.
 * sys-power/pm-utils - New version, from my fork. Re-made ebuild. Included all the patches present in ::gentoo before last-riting in January 2021, non-specific Debian patches and a patch from c2p-overlay. Included all the additional files from Gentoo/Debian (the same). Deleted obsolete files which were being removed by Gentoo ebuild / Debian rules. Included pm-quirks. Fixed Gentoo bugs 666380, 579912, 549848, 489650, 443530, 703026 and Debian bugs 485443, 659260.
 * www-apps/cgit - Building cgit without webapp-config. The ebuild is significantly re-made.
