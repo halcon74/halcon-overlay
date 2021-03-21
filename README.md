@@ -54,7 +54,7 @@ emerge --sync halcon-overlay
 * Git repository on GitHub - https://github.com/halcon74/halcon-overlay
 
 #### Gentoo Quality Assurance:
-  (last run the 22 March 2021)
+  (last run on the 22 March 2021)
   
 * /var/db/repos/halcon-overlay # repoman -dx --without-mask full
   
