@@ -9,7 +9,7 @@
 		Minilla is a CPAN module authoring tool. Minilla provides minil command for authorizing a CPAN distribution.
 	</longdescription>
 	<use>
-		<flag name="disthook">Apply the patch for making release.hooks run not at 'minil release' only, but at 'minil dist' too</pkg></flag>
+		<flag name="disthook">Apply the patch for making release.hooks run not at 'minil release' only, but at 'minil dist' too</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpan">Minilla</remote-id>

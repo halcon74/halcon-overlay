@@ -14,5 +14,6 @@
 	<use>
 		<flag name="highlight">Enable source code highlighting</flag>
 		<flag name="lua">Enable support for Lua scripting</flag>
+		<flag name="nginx">Change owners of the application directories to nginx:nginx (introduced in halcon-overlay); changing flag does not work at re-installing the same version (requires clean uninstall, then install)</flag>
 	</use>
 </pkgmetadata>
