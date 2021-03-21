@@ -30,7 +30,7 @@ RDEPEND="
 	amd64? ( ${vbetool} )
 	x86? ( ${vbetool} )
 	logrotate? ( app-admin/logrotate )
-	video_cards_radeon? ( app-laptop/radeontool )
+	video_cards_radeon? ( sys-apps/radeontool )
 "
 DEPEND="
 	${RDEPEND}

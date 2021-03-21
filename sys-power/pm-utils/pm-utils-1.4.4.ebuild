@@ -10,7 +10,7 @@ SRC_URI="https://github.com/halcon74/pm-utils/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~s390 ~x86"
 IUSE="debug +logrotate video_cards_intel video_cards_radeon"
 
 RESTRICT="mirror"
@@ -25,7 +25,7 @@ RDEPEND="
 	amd64? ( ${vbetool} )
 	x86? ( ${vbetool} )
 	logrotate? ( app-admin/logrotate )
-	video_cards_radeon? ( app-laptop/radeontool )
+	video_cards_radeon? ( sys-apps/radeontool )
 "
 DEPEND="${RDEPEND}"
 

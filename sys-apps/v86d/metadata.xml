@@ -5,4 +5,7 @@
 		<email>halcon@tuta.io</email>
 		<name>Alexey Mishustin</name>
 	</maintainer>
+	<use>
+		<flag name="x86emu">Run in a fully software-emulated environment. Should be used for x86-64 builds.</flag>
+	</use>
 </pkgmetadata>

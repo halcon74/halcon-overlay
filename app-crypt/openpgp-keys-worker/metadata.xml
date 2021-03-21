@@ -5,7 +5,4 @@
 		<email>halcon@tuta.io</email>
 		<name>Alexey Mishustin</name>
 	</maintainer>
-	<longdescription lang="en">
-		Ralf Hoffmann's openPGP key used to sign app-misc/worker releases.
-	</longdescription>
 </pkgmetadata>

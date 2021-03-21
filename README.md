@@ -54,24 +54,33 @@ emerge --sync halcon-overlay
 * Git repository on GitHub - https://github.com/halcon74/halcon-overlay
 
 #### Gentoo Quality Assurance:
-
-* /var/db/repos/halcon-overlay # repoman -dx full
+  (last run the 22 March 2021)
+  
+* /var/db/repos/halcon-overlay # repoman -dx --without-mask full
   
 RepoMan scours the neighborhood...  
   dependency.deprecated         2  
    media-gfx/xnviewmp-bin/xnviewmp-bin-0.96.5.ebuild: 'dev-qt/qtwebkit:5[qml]'  
    media-gfx/xnviewmp-bin/xnviewmp-bin-0.96.5.ebuild: 'dev-qt/qtwebkit:5[opengl]'  
-  
-Note: use --without-mask to check KEYWORDS on dependencies of masked packages  
-  
+  upstream.workaround           2  
+   dev-libs/klibc/klibc-2.0.4-r3.ebuild: line 183: Upstream parallel compilation bug (ebuild calls emake -j1)  
+   dev-libs/klibc/klibc-2.0.4-r4.ebuild: line 185: Upstream parallel compilation bug (ebuild calls emake -j1)  
 RepoMan sez: "You're only giving me a partial QA payment?  
               I'll take it this time, but I'm not happy."  
   
 * /var/db/repos/halcon-overlay # pkgcheck scan
   
-app-misc/worker  
-  PotentialStable: version 4.6.1-r100: slot(0), stabled arch: [ x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc, ~ppc64 ]  
+app-crypt/openpgp-keys-worker  
+  PotentialStable: version 20210320: slot(0), stabled arches: [ amd64, ppc, x86 ], potentials: [ ~arm, ~hppa, ~ppc64 ]  
   
 dev-perl/Test-Deep-Fuzzy  
   RedundantLongDescription: metadata.xml longdescription is too short  
-
+  
+dev-libs/klibc  
+  PotentialStable: version 2.0.4-r3: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~ia64, ~ppc, ~ppc64, ~sparc ]  
+  
+app-misc/worker  
+  RedundantVersion: version 4.6.1-r100: slot(0) keywords are overshadowed by versions: 4.7.0, 4.7.0-r1  
+  RedundantVersion: version 4.7.0: slot(0) keywords are overshadowed by version: 4.7.0-r1  
+  PotentialStable: version 4.7.0-r1: slot(0), stabled arch: [ x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc, ~ppc64 ]  
+  
