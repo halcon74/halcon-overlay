@@ -11,6 +11,7 @@ If you find a bug, please feel free to report it.
 * app-misc/worker - Version bump, relatively to the current 4.6.1 in ::gentoo (20.03.2021). The ebuild is significantly re-made. Verifying release signature is available (with USE flag 'verify-sig').
 * app-portage/g-cpan - So far for testing/learning purposes only.
 * app-text/evince - Building evince without gvfs and dbus. And it works! [MASKED], as I don't neither use nor maintain this ebuild anymore.
+* dev-libs/klibc - Minimal libc subset for use with initramfs. Dependency for sys-apps/v86d. Two ebuild versions, one of them is identical to the standard ebuild in ::gentoo before last-riting in March 2021.
 * dev-perl/JSON - Version bump, relatively to the (obsolete) current 2.940.0 in ::gentoo (03.02.2021). 
 * dev-perl/Config-Identity - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/Data-Entropy - Entropy (randomness) management. The package is being installed in minimal configuration (without RandomnumbersInfo and RandomOrg modules). Absent in ::gentoo.  
@@ -28,7 +29,6 @@ If you find a bug, please feel free to report it.
 * media-gfx/xnviewmp-bin - Attempt to build XnViewMP with system libraries. So far unsuccessful... [MASKED], as this ebuild is not yet ready. Absent in ::gentoo.  
 * media-libs/avidemux-plugins - Fixed Gentoo bug 744859. Lets to get rid of dev-lang/spidermonkey and of python 2.7.
 * sys-apps/v86d - Daemon to run x86 code in an emulated environment. Two ebuild versions, one of them is identical to the ebuild in sabayon ("for-gentoo") overlay before klibc last-riting in March 2021.
-* sys-libs/klibc - Minimal libc subset for use with initramfs. Dependency for sys-apps/v86d. Two ebuild versions, one of them is identical to the standard ebuild in ::gentoo before last-riting in March 2021.
 * sys-power/pm-utils - New version, from my fork. Re-made ebuild. Included all the patches present in ::gentoo before last-riting in January 2021, non-specific Debian patches and a patch from c2p-overlay. Included all the additional files from Gentoo/Debian (the same). Deleted obsolete files which were being removed by Gentoo ebuild / Debian rules. Included pm-quirks. Fixed Gentoo bugs 666380, 579912, 549848, 489650, 443530, 703026 and Debian bugs 485443, 659260.
 * www-apps/cgit - Building cgit without webapp-config. The ebuild is significantly re-made.
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8). Absent in ::gentoo.  
