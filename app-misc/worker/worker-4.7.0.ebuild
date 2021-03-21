@@ -31,10 +31,9 @@ RDEPEND="x11-libs/libX11
 	openssl? ( dev-libs/openssl )
 	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )"
-DEPEND="${RDEPEND}
-	verify-sig? ( >=app-crypt/openpgp-keys-worker-20210320 )
-"
-BDEPEND="virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
+	verify-sig? ( >=app-crypt/openpgp-keys-worker-20210320 )"
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README README_LARGEFILES THANKS )
 
