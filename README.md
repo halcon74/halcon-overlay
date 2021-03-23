@@ -17,8 +17,10 @@ If you find a bug, please feel free to report it.
 * dev-perl/Data-Entropy - Entropy (randomness) management. The package is being installed in minimal configuration (without RandomnumbersInfo and RandomOrg modules). Absent in ::gentoo.  
 * dev-perl/Data-Section-Simple - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/Digest-Bcrypt - Perl interface to the bcrypt digest algorithm (a simple wrapper around Crypt::Eksblowfish::Bcrypt). Absent in ::gentoo.  
+* dev-perl/Gentoo-Overlay - Tools for working with Gentoo Overlays, written by recently deceased Kent Fredric (Rest in Peace...) Absent in ::gentoo.  
 * dev-perl/Minilla - CPAN module authoring tool, recently suggested. The package can be installed with USE flag 'disthook' which applies the patch for making release.hooks run not at 'minil release' only, but at 'minil dist' too (according to my Minilla fork). So far, the package is being installed in minimal configuration (without "recommended" dependencies). Absent in ::gentoo.  
 * dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
+* dev-perl/MooX-ClassAttribute - Dependency for Gentoo-Overlay. Absent in ::gentoo.  
 * dev-perl/Perl-osnames - Tool for listing names of operating systems as they are detected by Perl. Absent in ::gentoo.  
 * dev-perl/String-Format - Fixed Gentoo bug 715140. Version bump, relatively to the (obsolete) current 1.170.0 in ::gentoo (02.02.2021). The bump is important because String-Format-1.170.0 will not work in the next perl version (5.32). All its reverse dependencies, including Perl-Critic, won't work either. (Perl-Critic warns about it.)
 * dev-perl/Test-Deep-Fuzzy - Dependency for Minilla. Absent in ::gentoo.  
@@ -54,7 +56,7 @@ emerge --sync halcon-overlay
 * Git repository on GitHub - https://github.com/halcon74/halcon-overlay
 
 #### Gentoo Quality Assurance:
-  (last run on the 22 March 2021)
+  (last run on the 23.03.2021)
   
 * /var/db/repos/halcon-overlay # repoman -dx --without-mask full
   
@@ -73,14 +75,40 @@ RepoMan sez: "You're only giving me a partial QA payment?
 app-crypt/openpgp-keys-worker  
   PotentialStable: version 20210320: slot(0), stabled arches: [ amd64, ppc, x86 ], potentials: [ ~arm, ~hppa, ~ppc64 ]  
   
+dev-perl/MooX-ClassAttribute  
+  NonexistentBlocker: version 0.11.0: nonexistent blocker DEPEND="!<=dev-perl/MooseX-ClassAttribute-0.260.0": no matches in repo history  
+  NonexistentBlocker: version 0.11.0: nonexistent blocker DEPEND="!~dev-perl/Moo-1.1.0": no matches in repo history  
+  
 dev-perl/Test-Deep-Fuzzy  
   RedundantLongDescription: metadata.xml longdescription is too short  
+  
+app-misc/worker  
+  RedundantVersion: version 4.6.1-r100: slot(0) keywords are overshadowed by version: 4.7.0-r1  
+  PotentialStable: version 4.7.0-r1: slot(0), stabled arch: [ x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc, ~ppc64 ]  
   
 dev-libs/klibc  
   PotentialStable: version 2.0.4-r3: slot(0), stabled arches: [ amd64, x86 ], potentials: [ ~alpha, ~arm, ~ia64, ~ppc, ~ppc64, ~sparc ]  
   
-app-misc/worker  
-  RedundantVersion: version 4.6.1-r100: slot(0) keywords are overshadowed by versions: 4.7.0, 4.7.0-r1  
-  RedundantVersion: version 4.7.0: slot(0) keywords are overshadowed by version: 4.7.0-r1  
-  PotentialStable: version 4.7.0-r1: slot(0), stabled arch: [ x86 ], potentials: [ ~amd64, ~arm, ~hppa, ~ppc, ~ppc64 ]  
+sys-apps/v86d  
+  NonsolvableDepsInDev: version 0.1.10-r1: nonsolvable depset(depend) keyword(amd64) dev profile (default/linux/amd64/17.0/x32) (2 total): solutions: [ dev-libs/klibc ]  
+  NonsolvableDepsInStable: version 0.1.10-r1: nonsolvable depset(depend) keyword(amd64) stable profile (default/linux/amd64/17.1) (52 total): solutions: [ dev-libs/klibc ]  
+  NonsolvableDepsInDev: version 0.1.10-r2: nonsolvable depset(depend) keyword(~amd64) dev profile (default/linux/amd64/17.0/x32): solutions: [ dev-libs/klibc ]  
+  NonsolvableDepsInStable: version 0.1.10-r2: nonsolvable depset(depend) keyword(~amd64) stable profile (default/linux/amd64/17.1) (26 total): solutions: [ dev-libs/klibc ]  
+  
+media-libs/avidemux-plugins  
+  NonexistentBlocker: version 2.7.6-r1: nonexistent blocker RDEPEND="!<media-libs/avidemux-plugins-2.7.6": no matches in repo history  
+  
+sys-power/pm-utils  
+  NonexistentBlocker: version 1.4.4: nonexistent blocker DEPEND="!<app-laptop/laptop-mode-tools-1.55-r1": no matches in repo history  
+  NonexistentBlocker: version 1.4.4: nonexistent blocker DEPEND="!sys-power/pm-quirks": no matches in repo history  
+  NonexistentBlocker: version 1.4.4: nonexistent blocker RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1": no matches in repo history  
+  NonexistentBlocker: version 1.4.4: nonexistent blocker RDEPEND="!sys-power/pm-quirks": no matches in repo history  
+  NonexistentBlocker: version 9999: nonexistent blocker DEPEND="!<app-laptop/laptop-mode-tools-1.55-r1": no matches in repo history  
+  NonexistentBlocker: version 9999: nonexistent blocker DEPEND="!sys-power/pm-quirks": no matches in repo history  
+  NonexistentBlocker: version 9999: nonexistent blocker RDEPEND="!<app-laptop/laptop-mode-tools-1.55-r1": no matches in repo history  
+  NonexistentBlocker: version 9999: nonexistent blocker RDEPEND="!sys-power/pm-quirks": no matches in repo history  
+  
+eclass  
+  EclassDocMissingFunc: unpacker: undocumented functions: find_unpackable_file, unpack_banner  
+  EclassDocMissingFunc: verify-all-sigs: undocumented function: find_unpackable_file  
   

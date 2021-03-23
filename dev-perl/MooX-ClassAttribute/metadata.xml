@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">MooX-ClassAttribute</remote-id>
+		<remote-id type="cpan-module">MooX::ClassAttribute</remote-id>
+		<remote-id type="cpan-module">MooX::ClassAttribute::HandleMoose</remote-id>
+		<remote-id type="cpan-module">Method::Generate::ClassAccessor</remote-id>
+		<remote-id type="cpan-module">MooX::CaptainHook</remote-id>
+		<remote-id type="cpan-module">MooX::CaptainHook::HandleMoose::Hack</remote-id>
+		<remote-id type="cpan-module">MooX::CaptainHook::OnApplication</remote-id>
+		<remote-id type="cpan-module">MooX::CaptainHook::OnApplication::Moose</remote-id>
+		<remote-id type="cpan-module">MooX::CaptainHook::OnInflation </remote-id>
+	</upstream>
+</pkgmetadata>
