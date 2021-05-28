@@ -30,7 +30,7 @@ RDEPEND="
 	>=virtual/perl-Math-BigRat-0.40.0
 "
 
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? ( virtual/perl-Test-Simple )
 "

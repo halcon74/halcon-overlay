@@ -25,7 +25,7 @@ RDEPEND="
 	virtual/perl-parent
 "
 
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-File-Spec
 	>=virtual/perl-Scalar-List-Utils-0.880.0

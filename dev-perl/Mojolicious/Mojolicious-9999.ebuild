@@ -36,7 +36,7 @@ RDEPEND="
 	>=virtual/perl-Pod-Simple-3.90.0
 	>=virtual/perl-Time-Local-1.200.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple	)
 "

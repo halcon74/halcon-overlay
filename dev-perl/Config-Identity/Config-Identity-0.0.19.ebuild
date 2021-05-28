@@ -25,7 +25,7 @@ RDEPEND="
 	dev-perl/File-Which
 	dev-perl/IPC-Run
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.170.0
 	test? (
 		virtual/perl-Test-Simple

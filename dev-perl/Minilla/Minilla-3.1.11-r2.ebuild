@@ -46,7 +46,7 @@ RDEPEND="
 	dev-perl/URI
 "
 
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-File-Temp
 	dev-perl/File-Copy-Recursive
 	dev-perl/JSON

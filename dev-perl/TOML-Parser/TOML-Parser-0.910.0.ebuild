@@ -28,7 +28,7 @@ RDEPEND="
 	dev-perl/Types-Serialiser
 "
 
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-MIME-Base64
 	>=virtual/perl-Storable-2.380.0
 	>=dev-perl/Module-Build-Tiny-0.35.0

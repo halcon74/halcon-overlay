@@ -40,7 +40,7 @@ RDEPEND="
 "
 
 # FindBin -> perl
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-File-Spec
 	test? (

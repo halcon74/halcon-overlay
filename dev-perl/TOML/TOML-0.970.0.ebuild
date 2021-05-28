@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-perl/TOML-Parser-0.40.0
 "
 
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.35.0
 	test? ( virtual/perl-Test-Simple )
 "

@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-perl/Role-Tiny-1.0.0
 "
 
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.170.0
 	!~dev-perl/Moo-1.1.0
 	!<=dev-perl/MooseX-ClassAttribute-0.260.0

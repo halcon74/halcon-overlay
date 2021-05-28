@@ -23,7 +23,7 @@ RDEPEND="
 "
 
 # t: IPC::Open3 -> perl
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-File-Spec
 	virtual/perl-IO
