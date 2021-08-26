@@ -6,7 +6,7 @@
 		<name>Alexey Mishustin</name>
 	</maintainer>
 	<longdescription lang="en">
-		A fork of the original Gentoo's eudev made after the announcement about its retirement in August 2021.
+		A fork of the original Gentoo's eudev made at the announcement about its retirement in August 2021.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/halcon74/eudev</bugs-to>
