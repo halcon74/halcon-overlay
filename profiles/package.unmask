@@ -1,2 +1,4 @@
 dev-libs/klibc
+sys-fs/eudev
 sys-power/pm-utils
+virtual/libudev

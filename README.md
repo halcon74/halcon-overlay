@@ -8,10 +8,10 @@ If you find a bug, please feel free to report it.
 * app-crypt/openpgp-keys-pm-utils - Package for testing the functionality of checking git commit signatures in ebuilds. Absent in ::gentoo.  
 * app-crypt/openpgp-keys-worker - Ralf Hoffmann's openPGP key used to sign app-misc/worker releases. Absent in ::gentoo.  
 * app-misc/Hello_World - Test program that I've written for learning purposes. It just prints 'Hello World!' to STDOUT. Absent in ::gentoo.  
-* app-misc/worker - Version bump, relatively to the current 4.6.1 in ::gentoo (20.03.2021). The ebuild is significantly re-made. Verifying release signature is available (with USE flag 'verify-sig').
-* app-portage/g-cpan - So far for testing/learning purposes only.
-* app-text/evince - Building evince without gvfs and dbus. And it works! [MASKED], as I don't neither use nor maintain this ebuild anymore.
-* dev-libs/klibc - Minimal libc subset for use with initramfs. Dependency for sys-apps/v86d. Two ebuild versions, one of them is identical to the standard ebuild in ::gentoo before last-riting in March 2021.
+* app-misc/worker - Version bump, relatively to the current 4.6.1 in ::gentoo (20.03.2021). The ebuild is significantly re-made. Verifying release signature is available (with USE flag 'verify-sig').  
+* app-portage/g-cpan - So far for testing/learning purposes only.  
+* app-text/evince - Building evince without gvfs and dbus. And it works! [MASKED], as I don't neither use nor maintain this ebuild anymore.  
+* dev-libs/klibc - Minimal libc subset for use with initramfs. Dependency for sys-apps/v86d. Two ebuild versions, one of them is identical to the standard ebuild in ::gentoo before last-riting in March 2021.  
 * dev-perl/JSON - Version bump, relatively to the (obsolete) current 2.940.0 in ::gentoo (03.02.2021). 
 * dev-perl/Config-Identity - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/Data-Entropy - Entropy (randomness) management. The package is being installed in minimal configuration (without RandomnumbersInfo and RandomOrg modules). Absent in ::gentoo.  
@@ -19,21 +19,23 @@ If you find a bug, please feel free to report it.
 * dev-perl/Digest-Bcrypt - Perl interface to the bcrypt digest algorithm (a simple wrapper around Crypt::Eksblowfish::Bcrypt). Absent in ::gentoo.  
 * dev-perl/Gentoo-Overlay - Tools for working with Gentoo Overlays, written by recently deceased Kent Fredric (Rest in Peace...) Absent in ::gentoo.  
 * dev-perl/Minilla - CPAN module authoring tool, recently suggested. The package can be installed with USE flag 'disthook' which applies the patch for making release.hooks run not at 'minil release' only, but at 'minil dist' too (according to my Minilla fork). So far, the package is being installed in minimal configuration (without "recommended" dependencies). Absent in ::gentoo.  
-* dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.
+* dev-perl/Mojolicious - "Really live" ebuild. Each new stable (not development) release gets installed automatically without the need to edit the ebuild.  
 * dev-perl/MooX-ClassAttribute - Dependency for Gentoo-Overlay. Absent in ::gentoo.  
 * dev-perl/Perl-osnames - Tool for listing names of operating systems as they are detected by Perl. Absent in ::gentoo.  
-* dev-perl/String-Format - Fixed Gentoo bug 715140. Version bump, relatively to the (obsolete) current 1.170.0 in ::gentoo (02.02.2021). The bump is important because String-Format-1.170.0 will not work in the next perl version (5.32). All its reverse dependencies, including Perl-Critic, won't work either. (Perl-Critic warns about it.)
+* dev-perl/String-Format - Fixed Gentoo bug 715140. Version bump, relatively to the (obsolete) current 1.170.0 in ::gentoo (02.02.2021). The bump is important because String-Format-1.170.0 will not work in the next perl version (5.32). All its reverse dependencies, including Perl-Critic, won't work either. (Perl-Critic warns about it.)  
 * dev-perl/Test-Deep-Fuzzy - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/Text-MicroTemplate - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/TOML - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/TOML-Parser - Dependency for Minilla. Absent in ::gentoo.  
-* dev-vcs/hg-git - Version bump, relatively to the current 0.9.0 in ::gentoo (04.02.2021).
+* dev-vcs/hg-git - Version bump, relatively to the current 0.9.0 in ::gentoo (04.02.2021).  
 * media-gfx/xnviewmp-bin - Attempt to build XnViewMP with system libraries. So far unsuccessful... [MASKED], as this ebuild is not yet ready. Absent in ::gentoo.  
-* media-libs/avidemux-plugins - Fixed Gentoo bug 744859. Lets to get rid of dev-lang/spidermonkey and of python 2.7.
-* net-im/dino - Fixed Gentoo bug 790170.
-* sys-apps/v86d - Daemon to run x86 code in an emulated environment. Two ebuild versions, one of them is identical to the ebuild in sabayon ("for-gentoo") overlay before klibc last-riting in March 2021.
-* sys-power/pm-utils - New version, from my fork. Re-made ebuild. Included all the patches present in ::gentoo before last-riting in January 2021, non-specific Debian patches and a patch from c2p-overlay. Included all the additional files from Gentoo/Debian (the same). Deleted obsolete files which were being removed by Gentoo ebuild / Debian rules. Included pm-quirks. Fixed Gentoo bugs 666380, 579912, 549848, 489650, 443530, 703026 and Debian bugs 485443, 659260.
-* www-apps/cgit - Building cgit without webapp-config. The ebuild is significantly re-made.
+* media-libs/avidemux-plugins - Fixed Gentoo bug 744859. Lets to get rid of dev-lang/spidermonkey and of python 2.7.  
+* net-im/dino - Fixed Gentoo bug 790170.  
+* sys-apps/v86d - Daemon to run x86 code in an emulated environment. Two ebuild versions, one of them is identical to the ebuild in sabayon ("for-gentoo") overlay before klibc last-riting in March 2021.  
+* sys-fs/eudev - Downloading from my fork. Based on ::gentoo ebuilds at the announcement about eudev retirement in August 2021.  
+* sys-power/pm-utils - New version, from my fork. Re-made ebuild. Included all the patches present in ::gentoo before last-riting in January 2021, non-specific Debian patches and a patch from c2p-overlay. Included all the additional files from Gentoo/Debian (the same). Deleted obsolete files which were being removed by Gentoo ebuild / Debian rules. Included pm-quirks. Fixed Gentoo bugs 666380, 579912, 549848, 489650, 443530, 703026 and Debian bugs 485443, 659260.  
+* virtual/libudev - Copy of ::gentoo ebuild made at the announcement about eudev retirement in August 2021.  
+* www-apps/cgit - Building cgit without webapp-config. The ebuild is significantly re-made.  
 * x11-misc/clipit - Fork of Parcellite. Based on the ebuild from Case_Of overlay. Fixed building with 'appindicator' USE flag (I would have reported a bug, if the tracker was on GitHub). Absent in ::gentoo.  
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8). Absent in ::gentoo.  
 * x11-misc/fbpanel - Light-weight X11 desktop panel, eleksir's fork with a new version. There is only the old, original program in ::gentoo.  
