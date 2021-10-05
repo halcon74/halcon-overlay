@@ -8,10 +8,10 @@ KV_min=2.6.39
 inherit autotools linux-info multilib multilib-minimal toolchain-funcs
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://github.com/halcon74/eudev.git"
+	EGIT_REPO_URI="https://github.com/eudev-project/eudev.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/halcon74/eudev/archive/refs/tags/v${PV}.tar.gz"
+	SRC_URI="https://github.com/eudev-project/eudev/archive/refs/tags/v${PV}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
