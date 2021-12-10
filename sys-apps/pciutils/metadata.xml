@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>halcon@tuta.io</email>
+		<name>Alexey Mishustin</name>
+	</maintainer>
+	<longdescription lang="en">
+		Various utilities dealing with the PCI bus. Version compatible with eudev (depending on hwids instead of hwdata).
+	</longdescription>
+<use>
+	<flag name="dns">Enable support for querying the central database of PCI IDs using DNS</flag>
+	<flag name="kmod">Enable <pkg>sys-apps/kmod</pkg> support for the -k switch in lspci command</flag>
+	<flag name="zlib">Support compressed pci.ids database</flag>
+</use>
+</pkgmetadata>

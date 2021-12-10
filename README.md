@@ -33,6 +33,7 @@ If you find a bug, please feel free to report it.
 * net-im/dino - Fixed Gentoo bug 790170.  
 * net-wireless/rtl8192eu - Drivers for the rtl8192eu chipset for wireless adapters (D-Link DWA-131 rev E1 included). Based on the ebuild in Guru overlay. Updated to a newer commit. Absent in ::gentoo.  
 * sys-apps/hwids - Dependency for sys-fs/eudev. Downloading from my fork. Based on ::gentoo ebuilds made at the announcement about planning hwids last-riting in November 2021.  
+* sys-apps/pciutils - Various utilities dealing with the PCI bus. Version compatible with eudev (depending on hwids instead of hwdata).  
 * sys-apps/v86d - Daemon to run x86 code in an emulated environment. Two ebuild versions, one of them is identical to the ebuild in sabayon ("for-gentoo") overlay before klibc last-riting in March 2021.  
 * sys-fs/eudev - Downloading from a newly "adopted" project. 
 * sys-power/pm-utils - New version, from my fork. Re-made ebuild. Included all the patches present in ::gentoo before last-riting in January 2021, non-specific Debian patches and a patch from c2p-overlay. Included all the additional files from Gentoo/Debian (the same). Deleted obsolete files which were being removed by Gentoo ebuild / Debian rules. Included pm-quirks. Fixed Gentoo bugs 666380, 579912, 549848, 489650, 443530, 703026 and Debian bugs 485443, 659260.  
@@ -40,6 +41,7 @@ If you find a bug, please feel free to report it.
 * virtual/libudev - Copy of ::gentoo ebuild made at the announcement about eudev retirement in August 2021.  
 * virtual/udev - Copy of ::gentoo ebuild made at the announcement about eudev retirement in August 2021.  
 * www-apps/cgit - Building cgit without webapp-config. The ebuild is significantly re-made.  
+* x11-libs/libpciaccess - Library providing generic access to the PCI bus and devices. Version compatible with eudev (depending on hwids instead of hwdata).  
 * x11-misc/clipit - Fork of Parcellite. Based on the ebuild from Case_Of overlay. Fixed building with 'appindicator' USE flag (I would have reported a bug, if the tracker was on GitHub). Absent in ::gentoo.  
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8). Absent in ::gentoo.  
 * x11-misc/fbpanel - Light-weight X11 desktop panel, eleksir's fork with a new version. There is only the old, original program in ::gentoo.  
