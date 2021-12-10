@@ -6,10 +6,10 @@
 		<name>Alexey Mishustin</name>
 	</maintainer>
 	<longdescription lang="en">
-		Hardware (PCI, USB, OUI, IAB) IDs databases. The old package, compatible with eudev. https://www.mail-archive.com/gentoo-dev@lists.gentoo.org/msg93945.html</flag>
+		Hardware (PCI, USB, OUI, IAB) IDs databases. The old package, compatible with eudev. https://www.mail-archive.com/gentoo-dev@lists.gentoo.org/msg93945.html
 	</longdescription>
-<use>
-	<flag name="net">Install the oui.txt and iab.txt databases</flag>
-	<flag name="pci">Install the pci.ids database</flag>
-</use>
+	<use>
+		<flag name="net">Install the oui.txt and iab.txt databases</flag>
+		<flag name="pci">Install the pci.ids database</flag>
+	</use>
 </pkgmetadata>

@@ -8,13 +8,14 @@
 	<longdescription lang="en">
 		A fork of the original Gentoo's eudev made at the announcement about its retirement in August 2021.
 	</longdescription>
-<use>
-	<flag name="hwdb">Read vendor/device string database and add it to udev database</flag>
-	<flag name="kmod">Enable module loading through libkmod</flag>
-	<flag name="rule-generator">Install legacy rule generator rules and support scripts - note that the functionality within was dropped from sys-fs/udev as it is not stable in all cases; use at your own risk</flag>
-	<flag name="blkid">Enable blkid support</flag>
-	<flag name="efi">Enable EFI support</flag>
-</use>
+	<use>
+		<flag name="hwdb">Read vendor/device string database and add it to udev database</flag>
+		<flag name="kmod">Enable module loading through libkmod</flag>
+		<flag name="rule-generator">Install legacy rule generator rules and support scripts - note that the functionality within was dropped from sys-fs/udev as it is not stable in all cases; use at your own risk</flag>
+		<flag name="blkid">Enable blkid support</flag>
+		<flag name="efi">Enable EFI support</flag>
+		<flag name="smack">Enable SMACK security model</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://github.com/halcon74/eudev</bugs-to>
 		<remote-id type="github">halcon74/eudev</remote-id>
