@@ -7,12 +7,12 @@
 
 EAPI=7
 
+DIST_EXAMPLES=("examples/*")
+
 inherit perl-module git-r3
 
 DESCRIPTION="Real-time web framework"
 HOMEPAGE="https://mojolicious.org https://metacpan.org/release/Mojolicious https://github.com/mojolicious/mojo"
-
-DIST_EXAMPLES=("examples/*")
 
 EGIT_REPO_URI="https://github.com/mojolicious/mojo.git"
 EGIT_BRANCH="master"

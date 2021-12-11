@@ -5,12 +5,11 @@ EAPI=7
 
 DIST_AUTHOR="KAZUHO"
 DIST_VERSION="0.24"
+DIST_EXAMPLES=("contrib/*")
 inherit perl-module
 
 DESCRIPTION="Micro template engine with Perl5 language"
 HOMEPAGE="https://github.com/kazuho/p5-text-microtemplate"
-
-DIST_EXAMPLES=("contrib/*")
 
 SLOT="0"
 IUSE="examples test"

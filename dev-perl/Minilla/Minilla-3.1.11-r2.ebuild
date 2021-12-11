@@ -5,12 +5,11 @@ EAPI=7
 
 DIST_AUTHOR="SYOHEX"
 DIST_VERSION="v3.1.11"
+DIST_EXAMPLES=("eg/*")
 inherit perl-module
 
 DESCRIPTION="CPAN module authoring tool"
 HOMEPAGE="https://github.com/tokuhirom/Minilla"
-
-DIST_EXAMPLES=("eg/*")
 
 SLOT="0"
 IUSE="disthook examples test"

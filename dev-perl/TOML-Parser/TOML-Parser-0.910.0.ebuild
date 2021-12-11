@@ -5,12 +5,11 @@ EAPI=7
 
 DIST_AUTHOR="KARUPA"
 DIST_VERSION="0.91"
+DIST_EXAMPLES=("author/*")
 inherit perl-module
 
 DESCRIPTION="Simple TOML parser"
 HOMEPAGE="https://github.com/karupanerura/TOML-Parser"
-
-DIST_EXAMPLES=("author/*")
 
 SLOT="0"
 IUSE="examples test"

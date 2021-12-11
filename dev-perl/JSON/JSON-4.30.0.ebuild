@@ -5,11 +5,11 @@ EAPI=7
 
 DIST_AUTHOR="ISHIGAKI"
 DIST_VERSION="4.03"
+DIST_EXAMPLES=("eg/*")
 inherit perl-module
 
 DESCRIPTION="JSON (JavaScript Object Notation) encoder/decoder"
 HOMEPAGE="https://github.com/makamaka/JSON"
-DIST_EXAMPLES=("eg/*")
 
 SLOT="0"
 IUSE="examples test +xs"
