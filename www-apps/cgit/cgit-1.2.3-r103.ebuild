@@ -133,7 +133,7 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if [[ -z "${REPLACED_BY_VERSION}" ]]; then
-		ewarn "rm -rf ${ESYSROOT}${MY_EMPTY_DIRS[CACHEDIR]}"
-		rm -rf "${ESYSROOT}${MY_EMPTY_DIRS[CACHEDIR]}" || die
+		ewarn "rm -rf ${MY_EMPTY_DIRS[CACHEDIR]}"
+		rm -rf "${MY_EMPTY_DIRS[CACHEDIR]}" || die
 	fi
 }
