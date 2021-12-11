@@ -8,6 +8,9 @@
 	<longdescription lang="en">
 		Lightweight GTK+ clipboard manager. Fork of Parcellite.
 	</longdescription>
+	<use>
+		<flag name="gtk3">Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://github.com/CristianHenzel/ClipIt</bugs-to>
 		<remote-id type="github">CristianHenzel/ClipIt</remote-id>
