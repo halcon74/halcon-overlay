@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools gnome2-utils xdg-utils
+inherit autotools xdg-utils
 
 DESCRIPTION="Lightweight GTK+ clipboard manager. Fork of Parcellite."
 HOMEPAGE="http://gtkclipit.sourceforge.net https://github.com/CristianHenzel/ClipIt"

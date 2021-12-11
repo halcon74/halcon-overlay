@@ -5,7 +5,7 @@ EAPI="6"
 
 KV_min=2.6.39
 
-inherit autotools linux-info multilib multilib-minimal toolchain-funcs
+inherit autotools linux-info multilib-minimal toolchain-funcs
 
 if [[ ${PV} = 4.9999* ]]; then
 	EGIT_REPO_URI="https://github.com/eudev-project/eudev.git"

@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 VALA_MAX_API_VERSION="0.48"
-inherit cmake gnome2-utils vala xdg-utils
+inherit cmake vala xdg-utils
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
