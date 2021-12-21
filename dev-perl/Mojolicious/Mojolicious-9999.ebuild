@@ -1,9 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Based on an ebuild from pg-overlay [1] and the code proposed by Hu on Gentoo Forum [2]
-# [1] - https://github.com/gentoo-mirror/pg_overlay/blob/master/dev-perl/Mojolicious/Mojolicious-8.260.0.ebuild
-# [2] - https://forums.gentoo.org/viewtopic-p-8482160.html#8482160
+# Based on an (non-exisiting anymore) ebuild from pg-overlay and the code proposed by Hu on Gentoo Forum [1]
+# [1] - https://forums.gentoo.org/viewtopic-p-8482160.html#8482160
 
 EAPI=7
 
@@ -15,7 +14,7 @@ DESCRIPTION="Real-time web framework"
 HOMEPAGE="https://mojolicious.org https://metacpan.org/release/Mojolicious https://github.com/mojolicious/mojo"
 
 EGIT_REPO_URI="https://github.com/mojolicious/mojo.git"
-EGIT_BRANCH="master"
+EGIT_BRANCH="main"
 
 LICENSE="Artistic-2"
 SLOT="0"
@@ -51,7 +50,7 @@ src_unpack() {
 	elog "GIT_DIR=${GIT_DIR}"
 
 	local EGIT_COMMIT
-	EGIT_COMMIT=$(git describe --tags --abbrev=0 master)
+	EGIT_COMMIT=$(git describe --tags --abbrev=0 main)
 	elog "EGIT_COMMIT=${EGIT_COMMIT}"
 
 	# Yes, fetch again, now that EGIT_COMMIT is a specific tag.
