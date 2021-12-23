@@ -45,9 +45,9 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
-
 inherit git-r3
+
+EXPORT_FUNCTIONS src_unpack
 
 IUSE="verify-git-sig"
 
