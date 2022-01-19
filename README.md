@@ -28,6 +28,7 @@ If you find a bug, please feel free to report it.
 * dev-perl/TOML - Dependency for Minilla. Absent in ::gentoo.  
 * dev-perl/TOML-Parser - Dependency for Minilla. Absent in ::gentoo.  
 * dev-vcs/hg-git - Started as a version bump, relatively to 0.9.0 in ::gentoo at 04.02.2021.  
+* dev-vcs/tortoisehg - Version bump, relatively to the current 5.9.3 in ::gentoo (19.01.2022). 
 * media-gfx/xnviewmp-bin - Attempt to build XnViewMP with system libraries. So far unsuccessful... [MASKED], as this ebuild is not yet ready. Absent in ::gentoo.  
 * media-libs/avidemux-plugins - Fixed Gentoo bug 744859. Lets to get rid of dev-lang/spidermonkey and of python 2.7.  
 * net-im/dino - Fixed Gentoo bug 790170.  
