@@ -4,8 +4,9 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
+VALA_MIN_API_VERSION="0.34"
 VALA_MAX_API_VERSION="0.48"
-inherit cmake vala xdg-utils
+inherit cmake vala xdg
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
@@ -67,6 +68,7 @@ src_configure() {
 		"-DVALA_EXECUTABLE=${VALAC}"
 	)
 
+	cmake_src_configure
 	if has test ${FEATURES}; then
 		mycmakeargs+=("-DBUILD_TESTS=yes")
 	fi
