@@ -23,7 +23,7 @@ DEPEND="kmod? ( sys-apps/kmod )
 	static-libs? ( ${LIB_DEPEND} )
 	!static-libs? ( ${LIB_DEPEND//static-libs([+-]),} )"
 RDEPEND="${DEPEND}
-	sys-apps/hwdata"
+	sys-apps/hwids"
 # See bug #847133 re binutils check
 BDEPEND="sys-apps/which
 	|| ( >=sys-devel/binutils-2.37:* sys-devel/lld sys-devel/native-cctools )
@@ -120,7 +120,7 @@ pemake() {
 		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		RANLIB="$(tc-getRANLIB)" \
 		DNS=$(usex dns) \
-		IDSDIR='$(SHAREDIR)/hwdata' \
+		IDSDIR='$(SHAREDIR)/misc' \
 		MANDIR='$(SHAREDIR)/man' \
 		PREFIX="${EPREFIX}/usr" \
 		SHARED="yes" \
