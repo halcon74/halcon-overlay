@@ -155,8 +155,12 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc ChangeLog README TODO
 
-	rm "${ED}"/usr/sbin/update-pciids "${ED}"/usr/share/man/man8/update-pciids.8* || die
-	rm -r "${ED}"/usr/share/hwdata || die
+#	in Gentoo:
+#	rm "${ED}"/usr/sbin/update-pciids "${ED}"/usr/share/man/man8/update-pciids.8* || die
+#	rm -r "${ED}"/usr/share/hwdata || die
+
+	rm "${ED}"/usr/sbin/update-pciids "${ED}"/usr/share/misc/pci.ids \
+		"${ED}"/usr/share/man/man8/update-pciids.8*
 
 	newinitd "${FILESDIR}"/init.d-pciparm pciparm
 	newconfd "${FILESDIR}"/conf.d-pciparm pciparm
