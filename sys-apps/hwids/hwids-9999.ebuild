@@ -8,7 +8,7 @@ inherit udev
 DESCRIPTION="Hardware (PCI, USB, OUI, IAB) IDs databases"
 HOMEPAGE="https://github.com/halcon74/hwids"
 if [[ ${PV} == 9999 ]]; then
-	PYTHON_COMPAT=( python3_{6..9} )
+	PYTHON_COMPAT=( python3_{6..10} )
 	inherit git-r3 python-any-r1
 	EGIT_REPO_URI="https://github.com/halcon74/hwids.git"
 else
