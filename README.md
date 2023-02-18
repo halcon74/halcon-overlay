@@ -32,6 +32,7 @@ If you find a bug, please feel free to report it.
 * media-gfx/xnviewmp-bin - Attempt to build XnViewMP with system libraries. So far unsuccessful... [MASKED], as this ebuild is not yet ready. Absent in ::gentoo.  
 * media-libs/avidemux-plugins - Fixed Gentoo bug 744859. Lets to get rid of dev-lang/spidermonkey and of python 2.7.  
 * net-im/dino - Fixed Gentoo bug 790170.  
+* net-libs/gnutls - For maintaining compatibility with some other packages.  
 * net-wireless/rtl8192eu - Drivers for the rtl8192eu chipset for wireless adapters (D-Link DWA-131 rev E1 included). Based on the ebuild in Guru overlay. Updated to a newer commit. Absent in ::gentoo.  
 * sys-apps/hwids - Dependency for sys-fs/eudev. Downloading from my fork. Based on ::gentoo ebuilds made at the announcement about planning hwids last-riting in November 2021.  
 * sys-apps/pciutils - Various utilities dealing with the PCI bus. Version compatible with eudev (depending on hwids instead of hwdata).  
@@ -42,6 +43,7 @@ If you find a bug, please feel free to report it.
 * virtual/libudev - Copy of ::gentoo ebuild made at the announcement about eudev retirement in August 2021.  
 * virtual/udev - Copy of ::gentoo ebuild made at the announcement about eudev retirement in August 2021.  
 * www-apps/cgit - Building cgit without webapp-config. The ebuild is significantly re-made.  
+* www-client/firefox - Version bump, relatively to the current 102.7.0esr in ::gentoo (18.02.2023). Gentoo bug 895132.  
 * x11-libs/libpciaccess - Library providing generic access to the PCI bus and devices. Version compatible with eudev (depending on hwids instead of hwdata).  
 * x11-misc/clipit - Fork of Parcellite. Based on the ebuild from Case_Of overlay. Fixed building with 'appindicator' USE flag (I would have reported a bug, if the tracker was on GitHub). Absent in ::gentoo.  
 * x11-misc/drm_master_util - Non-root Xorg without elogind (for Linux kernels <5.8). Absent in ::gentoo.  
