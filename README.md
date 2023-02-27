@@ -34,6 +34,7 @@ If you find a bug, please feel free to report it.
 * net-im/dino - Fixed Gentoo bug 790170.  
 * net-libs/gnutls - For maintaining compatibility with some other packages.  
 * net-wireless/rtl8192eu - Drivers for the rtl8192eu chipset for wireless adapters (D-Link DWA-131 rev E1 included). Based on the ebuild in Guru overlay. Updated to a newer commit. Absent in ::gentoo.  
+* net-wireless/rtl8821ce-driver - Drivers for the rtl8821ce chipset for wireless adapters. Based on the ebuild in Trolltoo overlay. Updated to a newer commit. Absent in ::gentoo.  
 * sys-apps/hwids - Dependency for sys-fs/eudev. Downloading from my fork. Based on ::gentoo ebuilds made at the announcement about planning hwids last-riting in November 2021.  
 * sys-apps/pciutils - Various utilities dealing with the PCI bus. Version compatible with eudev (depending on hwids instead of hwdata).  
 * sys-apps/v86d - Daemon to run x86 code in an emulated environment. Two ebuild versions, one of them is identical to the ebuild in sabayon ("for-gentoo") overlay before klibc last-riting in March 2021.  
