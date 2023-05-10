@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs multilib-minimal flag-o-matic
 
@@ -25,8 +25,7 @@ DEPEND="kmod? ( sys-apps/kmod )
 RDEPEND="${DEPEND}
 	sys-apps/hwids"
 # See bug #847133 re binutils check
-BDEPEND="sys-apps/which
-	|| ( >=sys-devel/binutils-2.37:* sys-devel/lld sys-devel/native-cctools )
+BDEPEND="|| ( >=sys-devel/binutils-2.37:* sys-devel/lld sys-devel/native-cctools )
 	kmod? ( virtual/pkgconfig )"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/pci/config.h )
@@ -57,7 +56,7 @@ check_binutils_version() {
 		# ```
 		# 2.38
 		# ```
-		local ver=$($(tc-getLD) --version 2>&1 | head -1 | rev | cut -d' ' -f1 | rev)
+		local ver=$($(tc-getLD) --version 2>&1 | head -n 1 | rev | cut -d' ' -f1 | rev)
 
 		if ! [[ ${ver} =~ [0-9].[0-9][0-9] ]] ; then
 			# Skip if unrecognised format so we don't pass something
@@ -77,10 +76,11 @@ check_binutils_version() {
 			eerror "Old version of binutils activated! ${P} cannot be built with an old version."
 			eerror "Please follow these steps:"
 			eerror "1. Select a newer binutils (>= 2.37) using binutils-config"
+			eerror " (If no such version is installed, run emerge -v1 sys-devel/binutils)"
 			eerror "2. Run: . /etc/profile"
 			eerror "3. Try emerging again with: emerge -v1 ${CATEGORY}/${P}"
 			eerror "4. Complete your world upgrade if you were performing one."
-			eerror "4. Perform a depclean (emerge -acv)"
+			eerror "5. Perform a depclean (emerge -acv)"
 			eerror "\tYou MUST depclean after every world upgrade in future!"
 			die "Old binutils found! Change to a newer ld using binutils-config (bug #847133)."
 		fi
@@ -107,6 +107,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# bug #640836, bug #852929
+	filter-lto
+
 	# bug #471102
 	append-lfs-flags
 }
@@ -154,10 +157,6 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc ChangeLog README TODO
-
-#	in Gentoo:
-#	rm "${ED}"/usr/sbin/update-pciids "${ED}"/usr/share/man/man8/update-pciids.8* || die
-#	rm -r "${ED}"/usr/share/hwdata || die
 
 	rm "${ED}"/usr/sbin/update-pciids "${ED}"/usr/share/misc/pci.ids \
 		"${ED}"/usr/share/man/man8/update-pciids.8*
