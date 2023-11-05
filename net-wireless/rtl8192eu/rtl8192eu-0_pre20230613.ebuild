@@ -1,15 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit linux-mod
+EAPI=8
+inherit linux-mod-r1
 
-COMMIT="4dc937cb3993fb9f38fb141365ab09a9f9b3f647"
+COMMIT="f2fc8af7ab58d2123eed1aa4428e713cdfc27976"
 
 DESCRIPTION="Realtek 8192EU driver module for Linux kernel"
 HOMEPAGE="https://github.com/Mange/rtl8192eu-linux-driver"
 SRC_URI="https://github.com/Mange/rtl8192eu-linux-driver/archive/${COMMIT}.tar.gz -> rtl8192eu-${PV}.tar.gz"
 
+SLOT=0
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
