@@ -1,3 +1,9 @@
+#### THIS REPOSITORY IS NOT BEING UPDATED ANYMORE
+#### I SWITCHED TO GITLAB
+#### https://gitlab.com/halcon741/halcon-overlay
+
+
+
 #### A very EXPERIMENTAL overlay for my own use and testing/learning purposes.
 
 Use it (with caution), if you want to.
